@@ -1,0 +1,30 @@
+{
+    "team": [
+        {
+            "name": "Jameel S.",
+            "email": "e18147@eng.pdn.ac.lk",
+            "eNumber": "E/18/147"
+        },
+        {
+            "name": "Karunarathna W.K.",
+            "email": "e18170@eng.pdn.ac.lk",
+            "eNumber": "E/18/170"
+        },
+        {
+            "name": "Wanduragala T.D.B.",
+            "email": "e18379@eng.pdn.ac.lk",
+            "eNumber": "E/18/379"
+        }
+    ],
+    "supervisors": [
+        {
+            "name": "Dr. Suneth Namal Karunarathna",
+            "email": "namal@eng.pdn.ac.lk"
+        },
+        {
+            "name": "Dr. Kasun Rambukwelle",
+            "email": ""
+        }
+    ],
+    "tags": []
+}
