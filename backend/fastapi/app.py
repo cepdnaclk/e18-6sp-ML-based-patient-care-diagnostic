@@ -41,10 +41,11 @@ def predict_lung_cancer(data:LungCancer):
 def predict_heart_disease(data:HeartDisease):
     data1 = data.dict()
     prediction = classifier_heart.predict([[data1["age"],data1["anaemia"],data1["creatinine_phosphokinase"],data1["diabetes"],data1["ejection_fraction"],data1["high_blood_pressure"],data1["platelets"],data1["serum_creatinine"],data1["serum_sodium"],data1["sex"],data1["smoking"],data1["time"]]])
-    returnPred = {"prediction":prediction[0]}
+    int_predict = int(prediction[0])
+    returnPred = {"prediction":int_predict}
     json_to_return = json.dumps(returnPred, indent=1)
     parse = json.loads(json_to_return)
-    return parse
+    return returnPred
 
 #run api with unicorn
 if __name__=='__main__':
