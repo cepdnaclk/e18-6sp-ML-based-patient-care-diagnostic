@@ -2,5 +2,5 @@ uvicorn
 fastapi
 numpy
 pandas
-scikit-sklearn
+scikit_learn
 matplotlib
