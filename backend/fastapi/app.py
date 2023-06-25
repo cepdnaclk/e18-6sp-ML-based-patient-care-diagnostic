@@ -9,6 +9,9 @@ import pandas as pd
 import json
 
 app = FastAPI()         #create app
+
+server = app.server
+
 pickle_in_lung = open("lung_cancer/classifier.pkl", "rb")        #open pickle in read
 classifier_lung = pickle.load(pickle_in_lung)             #get model
 
