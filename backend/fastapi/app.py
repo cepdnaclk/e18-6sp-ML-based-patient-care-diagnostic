@@ -9,6 +9,8 @@ import pandas as pd
 import json
 
 app = FastAPI()         #create app
+
+
 pickle_in_lung = open("lung_cancer/classifier.pkl", "rb")        #open pickle in read
 classifier_lung = pickle.load(pickle_in_lung)             #get model
 
@@ -53,4 +55,3 @@ def predict_heart_disease(data:HeartDisease):
 if __name__=='__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000, reload=True)
 
-    
