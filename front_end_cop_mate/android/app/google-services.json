@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1095848856919",
+    "project_id": "patient-care-1592f",
+    "storage_bucket": "patient-care-1592f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095848856919:android:0908a4ba9bbeeac2040212",
+        "android_client_info": {
+          "package_name": "com.ThamishWanduragala.front_end_cop_mate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095848856919-psiakvtha8f635dh9ocd9dcv81n60ceb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBitQE274uwGxY5uw6ZbckSVN3Tjj7KFh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095848856919-psiakvtha8f635dh9ocd9dcv81n60ceb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
