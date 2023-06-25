@@ -1,2 +1,5 @@
 uvicorn
 fastapi
+numpy
+pandas
+json
