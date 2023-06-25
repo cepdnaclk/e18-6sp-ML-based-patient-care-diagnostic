@@ -1,8 +1,6 @@
+uvicorn
+fastapi
 numpy
 pandas
 scikit_learn
-plotly
-uvicorn
-fastapi
-pickle
-json
+matplotlib
