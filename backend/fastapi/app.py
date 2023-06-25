@@ -40,7 +40,9 @@ def predict_lung_cancer(data:LungCancer):
 @app.post('/heart_disease')
 def predict_heart_disease(data:HeartDisease):
     data1 = data.dict()
-    prediction = classifier_heart.predict([[data1["age"],data1["anaemia"],data1["creatinine_phosphokinase"],data1["diabetes"],data1["ejection_fraction"],data1["high_blood_pressure"],data1["platelets"],data1["serum_creatinine"],data1["serum_sodium"],data1["sex"],data1["smoking"],data1["time"]]])
+    platelets = float(data1["platelets"])
+    serum_creatinine = float(data1["serum_creatinine"])
+    prediction = classifier_heart.predict([[data1["age"],data1["anaemia"],data1["creatinine_phosphokinase"],data1["diabetes"],data1["ejection_fraction"],data1["high_blood_pressure"],platelets,serum_creatinine,data1["serum_sodium"],data1["sex"],data1["smoking"],data1["time"]]])
     int_predict = int(prediction[0])
     returnPred = {"prediction":int_predict}
     json_to_return = json.dumps(returnPred, indent=1)

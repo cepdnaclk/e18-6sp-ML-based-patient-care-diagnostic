@@ -40,6 +40,7 @@ dependencies:
   cloud_firestore: ^4.2.0
   firebase_auth: ^4.2.1
   font_awesome_flutter: ^10.3.0
+  toggle_switch: ^2.1.0
   syncfusion_flutter_gauges: ^20.3.61
   syncfusion_flutter_charts: ^20.3.61
   flutter_map: ^3.0.0
