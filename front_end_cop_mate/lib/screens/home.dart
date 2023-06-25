@@ -6,13 +6,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:front_end_cop_mate/models/Vehicle.dart';
+import 'package:front_end_cop_mate/screens/register_user.dart';
 
 void main() {
   return runApp(_ChartApp());
 }
 
 class _ChartApp extends StatefulWidget {
-
   @override
   State<_ChartApp> createState() => _ChartAppState();
 }
@@ -30,6 +30,7 @@ class _ChartAppState extends State<_ChartApp> {
 class day_summary_graph extends StatefulWidget {
   day_summary_graph({Key? key}) : super(key: key);
   static const String id = 'day_summary_graph';
+
   @override
   _day_summary_graphState createState() => _day_summary_graphState();
 }
@@ -75,16 +76,108 @@ class _day_summary_graphState extends State<day_summary_graph> {
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      height: 600,
-                      width: 400,
-                      child: Column(children: [
-                        const Image(image: AssetImage('images/home_page.png'),
-                        )
-                      ,Row(
-                          children: [],
-                        )],)
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(80),
+                      child: SizedBox.fromSize(
+                          size: const Size.fromRadius(144),
+                          child: Image.asset("images/home_page.png")),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, register_user.id);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Icon(
+                                FontAwesomeIcons.heartPulse,
+                                size: 100.0,
+                                color: Colors.grey,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "   Heart\nDiseases",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll<Color>(
+                                Color(0xFFFFFFFF)),
+                            minimumSize:
+                                MaterialStatePropertyAll<Size>(Size(150, 175)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 25,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, register_user.id);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            // crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.lungs,
+                                    size: 75.0,
+                                    color: Colors.grey,
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "   Lung\nCancer",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.black),
+                              ),
+                              SizedBox(
+                                height: 0,
+                              ),
+                            ],
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll<Color>(
+                                Color(0xFFFFFFFF)),
+                            minimumSize:
+                                MaterialStatePropertyAll<Size>(Size(150, 175)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -170,6 +263,7 @@ class _day_summary_graphState extends State<day_summary_graph> {
 
 class ChartData {
   ChartData(this.date, this.singleLine, this.doubleLine, this.crossingLine);
+
   final DateTime date;
   final double singleLine;
   final double doubleLine;
