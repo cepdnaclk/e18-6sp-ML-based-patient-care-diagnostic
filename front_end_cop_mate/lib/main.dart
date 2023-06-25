@@ -12,6 +12,7 @@ import 'package:front_end_cop_mate/screens/register_vehicle.dart';
 import 'package:front_end_cop_mate/screens/settings.dart';
 import 'package:front_end_cop_mate/screens/vehicle_analyze.dart';
 import 'package:front_end_cop_mate/screens/welcome_screen.dart';
+import 'package:front_end_cop_mate/screens/heart.dart';
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -42,6 +43,7 @@ class CopMate extends StatelessWidget {
         //vehicle_analyze.id: (context) => vehicle_analyze(),
         bottomnavigationbar.id: (context) => bottomnavigationbar(),
         // /search_vehciles.id: (context) => search_vehciles(),
+        heart.id: (context) => heart(),
       },
     );
   }
