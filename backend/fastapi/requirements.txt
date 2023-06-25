@@ -2,3 +2,5 @@ uvicorn
 fastapi
 numpy
 pandas
+sklearn
+matplotlib
