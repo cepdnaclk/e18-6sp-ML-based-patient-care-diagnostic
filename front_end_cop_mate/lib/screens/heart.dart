@@ -19,18 +19,18 @@ class heart extends StatefulWidget {
 
 class _heartState extends State<heart> {
   @override
-  int age = 0;
-  int anaemia = 0;
-  int creatinine_phosphokinase = 0;
-  int diabetes = 0;
-  int ejection_fraction = 0;
-  int high_blood_pressure = 0;
-  double platelets = 0;
-  double serum_creatinine = 0;
-  int serum_sodium = 0;
-  int sex = 0;
-  int smoking = 0;
-  int time = 0;
+  String age = "";
+  String anaemia = "";
+  String creatinine_phosphokinase = "";
+  String diabetes = "";
+  String ejection_fraction = "";
+  String high_blood_pressure = "";
+  String platelets = "";
+  String serum_creatinine = "";
+  String serum_sodium = "";
+  String sex = "";
+  String smoking = "";
+  String time = "";
   bool showSpinner = false;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -46,7 +46,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          age = int.parse(value);
+          age = value;
         }
       },
       decoration: InputDecoration(
@@ -99,7 +99,7 @@ class _heartState extends State<heart> {
               labels: ['Yes', 'No'],
               radiusStyle: true,
               onToggle: (index) {
-                anaemia = index!;
+                anaemia = index.toString();
               }),
         ],
       ),
@@ -116,7 +116,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          creatinine_phosphokinase = int.parse(value);
+          creatinine_phosphokinase = value;
         }
       },
       decoration: InputDecoration(
@@ -169,7 +169,7 @@ class _heartState extends State<heart> {
               labels: ['Yes', 'No'],
               radiusStyle: true,
               onToggle: (index) {
-                diabetes = index!;
+                diabetes = index.toString();
               }),
         ],
       ),
@@ -186,7 +186,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          ejection_fraction = int.parse(value);
+          ejection_fraction = value;
         }
       },
       decoration: InputDecoration(
@@ -239,7 +239,7 @@ class _heartState extends State<heart> {
               labels: ['Yes', 'No'],
               radiusStyle: true,
               onToggle: (index) {
-                high_blood_pressure = index!;
+                high_blood_pressure = index.toString();
               }),
         ],
       ),
@@ -256,7 +256,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          platelets = double.parse(value);
+          platelets = value;
         }
       },
       decoration: InputDecoration(
@@ -288,7 +288,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          serum_creatinine = double.parse(value);
+          serum_creatinine = value;
         }
       },
       decoration: InputDecoration(
@@ -320,7 +320,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          serum_sodium = int.parse(value);
+          serum_sodium = value;
         }
       },
       decoration: InputDecoration(
@@ -377,7 +377,7 @@ class _heartState extends State<heart> {
               labels: ['Male', 'Female'],
               radiusStyle: true,
               onToggle: (index) {
-                sex = index!;
+                sex = index.toString();
               }),
         ],
       ),
@@ -415,7 +415,7 @@ class _heartState extends State<heart> {
               labels: ['Yes', 'No'],
               radiusStyle: true,
               onToggle: (index) {
-                smoking = index!;
+                smoking = index.toString();
               }),
         ],
       ),
@@ -432,7 +432,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          time = int.parse(value);
+          time = value;
         }
       },
       decoration: InputDecoration(
@@ -547,7 +547,7 @@ class _heartState extends State<heart> {
                                   "time": time
                                 }),
                               );
-                              print(response.body);
+                              print(response.statusCode);
                               if (response.statusCode == 200) {
                                 dynamic resp = jsonDecode(response.body);
                                 print(resp);
