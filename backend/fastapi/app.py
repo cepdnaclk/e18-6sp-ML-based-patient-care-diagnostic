@@ -61,7 +61,7 @@ def predict_heart_disease(data:HeartDisease):
     returnPred = {"prediction":int_predict}
     json_to_return = json.dumps(returnPred, indent=1)
     parse = json.loads(json_to_return)
-    return returnPred
+    return parse
 
 #run api with unicorn
 if __name__=='__main__':
