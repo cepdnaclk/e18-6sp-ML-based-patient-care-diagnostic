@@ -21,7 +21,7 @@ class _bottomnavigationbarState extends State<bottomnavigationbar> {
   int currentIndex = 0;
   final screens = [
     day_summary_graph(),
-    search_vehciles(),
+    //search_vehciles(),
     settings()
   ];
 
