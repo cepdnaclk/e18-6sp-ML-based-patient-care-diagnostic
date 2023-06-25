@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:front_end_cop_mate/models/Vehicle.dart';
 import 'package:front_end_cop_mate/screens/register_vehicle.dart';
+import 'package:front_end_cop_mate/screens/heart.dart';
 
 void main() {
   return runApp(_ChartApp());
@@ -87,7 +88,7 @@ class _day_summary_graphState extends State<day_summary_graph> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, register_vehicle.id);
+                            Navigator.pushNamed(context, heart.id);
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
