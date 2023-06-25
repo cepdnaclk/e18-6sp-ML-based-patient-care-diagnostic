@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:front_end_cop_mate/models/Vehicle.dart';
 import 'package:front_end_cop_mate/screens/register_vehicle.dart';
 import 'package:front_end_cop_mate/screens/heart.dart';
+import 'package:front_end_cop_mate/screens/lung_cancer.dart';
 
 void main() {
   return runApp(_ChartApp());
@@ -130,7 +131,7 @@ class _day_summary_graphState extends State<day_summary_graph> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, register_vehicle.id);
+                            Navigator.pushNamed(context, lung_cancer.id);
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,

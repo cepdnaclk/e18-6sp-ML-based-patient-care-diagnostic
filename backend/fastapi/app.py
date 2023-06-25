@@ -41,7 +41,9 @@ def predict_lung_cancer(data:LungCancer):
 #predict heart disease
 @app.post('/heart_disease')
 def predict_heart_disease(data:HeartDisease):
-    data1 = data.dict()
+
+    data1 = dict(data)
+    print(data1)
 
     age = int(data1["age"])
     anaemia = int(data1["age"])
@@ -61,7 +63,7 @@ def predict_heart_disease(data:HeartDisease):
     returnPred = {"prediction":int_predict}
     json_to_return = json.dumps(returnPred, indent=1)
     parse = json.loads(json_to_return)
-    return returnPred
+    return parse
 
 #run api with unicorn
 if __name__=='__main__':

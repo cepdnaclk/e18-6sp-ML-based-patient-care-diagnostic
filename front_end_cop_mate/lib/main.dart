@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
+import 'package:front_end_cop_mate/screens/lung_cancer.dart';
 import 'package:front_end_cop_mate/screens/one_breaking.dart';
 import 'package:front_end_cop_mate/screens/search_vehicles.dart';
 import 'package:front_end_cop_mate/screens/welcome_screen.dart';
@@ -44,6 +45,7 @@ class CopMate extends StatelessWidget {
         bottomnavigationbar.id: (context) => bottomnavigationbar(),
         // /search_vehciles.id: (context) => search_vehciles(),
         heart.id: (context) => heart(),
+        lung_cancer.id: (context) => lung_cancer(),
       },
     );
   }
