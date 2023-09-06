@@ -482,7 +482,7 @@ class _heartState extends State<heart> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Virtual Aid'),
+        title: Text('Heart Disease Prediction'),
         backgroundColor: Color(0xFF518BB8),
       ),
       body: SingleChildScrollView(
