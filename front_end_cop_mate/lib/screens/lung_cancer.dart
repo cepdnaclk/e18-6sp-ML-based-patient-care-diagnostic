@@ -85,7 +85,7 @@ class _lung_cancerState extends State<lung_cancer> {
         borderRadius: BorderRadius.circular(10),
         color: Colors.white54,
       ),
-      height: 60,
+      height: 40,
       child: Row(
         children: [
           SizedBox(
@@ -111,6 +111,7 @@ class _lung_cancerState extends State<lung_cancer> {
               radiusStyle: true,
               onToggle: (index) {
                 Gender = index.toString();
+                print('switched to: $index');
               }),
         ],
       ),
@@ -141,6 +142,32 @@ class _lung_cancerState extends State<lung_cancer> {
   double widgetPointerValue20 = 5;
   double widgetPointerValue21 = 5;
 
+  Widget _build_on_a_scale() {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white54,
+        ),
+        height: 40,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                SizedBox(width: 10),
+                Text("On a scale of 0 to 10 :"),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildAir_Pollution() {
     return Container(
       decoration: BoxDecoration(
@@ -153,8 +180,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text(
-              "On a scale of 0 to 10:\nHow polluted is the air in the area you live in?"),
+          Text("How polluted is the air in the area you live in?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -233,7 +259,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nHow much alcohol do you intake daily?"),
+          Text("How much alcohol do you intake daily?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -312,7 +338,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nAre you allergic to dust?"),
+          Text("Are you allergic to dust?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -391,8 +417,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text(
-              "On a scale of 0 to 10:\nWere you exposed to any effects from occupational hazards?"),
+          Text("Were you exposed to any effects from occupational hazards?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -472,7 +497,7 @@ class _lung_cancerState extends State<lung_cancer> {
             height: 15,
           ),
           Text(
-              "On a scale of 0 to 10:\nDoes your family have a history of being prone to Lung Cancer?"),
+              "Does your family have a history of being prone to Lung Cancer?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -552,7 +577,7 @@ class _lung_cancerState extends State<lung_cancer> {
             height: 15,
           ),
           Text(
-              "On a scale of 0 to 10:\nDoes your family have a history of being prone to Lung Cancer?"),
+              "Does your family have a history of being prone to Lung Cancer?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -631,7 +656,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nDo you maintain a well balanced diet?"),
+          Text("Do you maintain a well balanced diet?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -710,7 +735,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nAre you prone to Obesity?"),
+          Text("Are you prone to Obesity?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -789,7 +814,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nHow much do you smoke?"),
+          Text("How much do you smoke?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -868,7 +893,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nHow much smoke do intake passivley?"),
+          Text("How much smoke do intake passivley?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -947,7 +972,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nAre you prone to chest pains?"),
+          Text("Are you prone to chest pains?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1026,7 +1051,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nDo you cough blood?"),
+          Text("Do you cough blood?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1105,8 +1130,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text(
-              "On a scale of 0 to 10:\nHow would you rate how quickly you get fatigue?"),
+          Text("How would you rate how quickly you get fatigue?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1185,7 +1209,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nDo you loose weight Quickly?"),
+          Text("Do you loose weight Quickly?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1264,7 +1288,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nDo you run out of breath quickly?"),
+          Text("Do you run out of breath quickly?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1343,7 +1367,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nAre you prone to wheezing?"),
+          Text("Are you prone to wheezing?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1422,8 +1446,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text(
-              "On a scale of 0 to 10:\nDo you have clubbing on your fingernails?"),
+          Text("Do you have clubbing on your fingernails?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1502,8 +1525,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text(
-              "On a scale of 0 to 10:\nDo you have clubbing on your fingernails?"),
+          Text("Do you have clubbing on your fingernails?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1582,7 +1604,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nDo you get cold frequently?"),
+          Text("Do you get cold frequently?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1661,7 +1683,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nDo you have a Dry Cough?"),
+          Text("Do you have a Dry Cough?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1740,7 +1762,7 @@ class _lung_cancerState extends State<lung_cancer> {
           SizedBox(
             height: 15,
           ),
-          Text("On a scale of 0 to 10:\nHow much do you snore?"),
+          Text("How much do you snore?"),
           SfLinearGauge(
             axisTrackStyle: LinearAxisTrackStyle(thickness: 10),
             maximum: 10,
@@ -1848,10 +1870,16 @@ class _lung_cancerState extends State<lung_cancer> {
                       key: _formkey,
                       child: Column(
                         children: <Widget>[
-                          _buildage(),
+                          Column(
+                            children: [
+                              _buildage(),
+                              SizedBox(height: 20),
+                              _buildgender(),
+                            ],
+                          ),
                           SizedBox(height: 20),
-                          _buildgender(),
-                          SizedBox(height: 20),
+                          _build_on_a_scale(),
+                          SizedBox(height: 10),
                           _buildAir_Pollution(),
                           SizedBox(height: 20),
                           _buildAlcohol_use(),
