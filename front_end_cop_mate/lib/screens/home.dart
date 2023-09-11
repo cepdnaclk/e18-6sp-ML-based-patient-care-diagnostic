@@ -10,6 +10,7 @@ import 'package:front_end_cop_mate/screens/register_vehicle.dart';
 import 'package:front_end_cop_mate/screens/heart.dart';
 import 'package:front_end_cop_mate/screens/lung_cancer.dart';
 import 'package:front_end_cop_mate/screens/diabetes.dart';
+import 'package:front_end_cop_mate/screens/brain_stroke.dart';
 
 void main() {
   return runApp(_ChartApp());
@@ -189,7 +190,7 @@ class _day_summary_graphState extends State<day_summary_graph> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, heart.id);
+                            Navigator.pushNamed(context, diabetes.id);
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -231,7 +232,7 @@ class _day_summary_graphState extends State<day_summary_graph> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, diabetes.id);
+                            Navigator.pushNamed(context, brain_stroke.id);
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,

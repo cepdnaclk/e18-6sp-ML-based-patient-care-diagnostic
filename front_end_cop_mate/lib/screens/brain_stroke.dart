@@ -9,24 +9,26 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
 
-class diabetes extends StatefulWidget {
-  const diabetes({super.key});
-  static const String id = 'diabetes';
+class brain_stroke extends StatefulWidget {
+  const brain_stroke({super.key});
+  static const String id = 'brain_stroke';
 
   @override
-  State<diabetes> createState() => _diabetesState();
+  State<brain_stroke> createState() => _brain_strokeState();
 }
 
-class _diabetesState extends State<diabetes> {
+class _brain_strokeState extends State<brain_stroke> {
   @override
+  String Gender = "";
   String age = "";
-  String pregnancies = "";
-  String glucose = "";
-  String BloodPressure = "";
-  String SkinThickness = "";
-  String Insulin = "";
-  String BMI = "";
-  String DiabetesPedigreeFunction = "";
+  String hypertension = "";
+  String heart_disease = "";
+  String ever_married = "";
+  String work_type = "";
+  String residence_type = "";
+  String avg_glucose_level = "";
+  String bmi = "";
+  String smoking_status = "";
   bool showSpinner = false;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -68,29 +70,260 @@ class _diabetesState extends State<diabetes> {
     );
   }
 
-  Widget _buildpregnancies() {
+  Widget _buildgender() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 40,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Gender:", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Male', 'Female'],
+              radiusStyle: true,
+              onToggle: (index) {
+                Gender = index.toString();
+                print('switched to: $index');
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildhypertension() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 60,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Hyper tension?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Yes', 'No'],
+              radiusStyle: true,
+              onToggle: (index) {
+                hypertension = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildheart_disease() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 60,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Heart disease?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Yes', 'No'],
+              radiusStyle: true,
+              onToggle: (index) {
+                heart_disease = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildever_married() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 60,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Ever married?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Yes', 'No'],
+              radiusStyle: true,
+              onToggle: (index) {
+                ever_married = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildwork_type() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 100,
+      width: 400,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Text("Work type?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            height: 10,
+          ),
+          ToggleSwitch(
+              minWidth: 110.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[700]!],
+                [Colors.purple[800]!],
+                [Colors.purple[300]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 3,
+              labels: ['Govt_job', 'Self employed', 'Private'],
+              radiusStyle: true,
+              onToggle: (index) {
+                work_type = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildresidence_type() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 60,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Residence type?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Urban', 'Rural'],
+              radiusStyle: true,
+              onToggle: (index) {
+                residence_type = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildavg_glucose_level() {
     return TextFormField(
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Enter pregnancies';
+          return 'Enter avg_glucose_level';
         }
 
         return null;
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          pregnancies = value;
+          avg_glucose_level = value;
         }
       },
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
-        labelText: "pregnancies",
+        labelText: "avg_glucose_level",
         icon: Icon(
           FontAwesomeIcons.baby,
           color: Colors.black,
         ),
-        hintText: "pregnancies",
+        hintText: "avg_glucose_level",
         hintStyle: TextStyle(color: Colors.grey),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -105,29 +338,29 @@ class _diabetesState extends State<diabetes> {
     );
   }
 
-  Widget _buildglucose() {
+  Widget _buildbmi() {
     return TextFormField(
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Enter glucose';
+          return 'Enter bmi';
         }
 
         return null;
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          glucose = value;
+          bmi = value;
         }
       },
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
-        labelText: "glucose",
+        labelText: "bmi",
         icon: Icon(
           FontAwesomeIcons.candyCane,
           color: Colors.black,
         ),
-        hintText: "glucose",
+        hintText: "bmi",
         hintStyle: TextStyle(color: Colors.grey),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -142,183 +375,43 @@ class _diabetesState extends State<diabetes> {
     );
   }
 
-  Widget _buildBloodPressure() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter Blood Pressure';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          BloodPressure = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "Blood Pressure",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "Blood Pressure",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
+  Widget _buildsmoking_status() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
       ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
-  }
-
-  Widget _buildSkinThickness() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter SkinThickness';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          SkinThickness = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "SkinThickness",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "SkinThickness",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
+      height: 100,
+      width: 400,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10,
           ),
-        ),
-      ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
-  }
-
-  Widget _buildInsulin() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter Insulin';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          Insulin = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "Insulin",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "Insulin",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
+          Text("Smoking status?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            height: 10,
           ),
-        ),
+          ToggleSwitch(
+              minWidth: 100.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!],
+                [Colors.purple[400]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 3,
+              labels: ['Never', 'Formerley', 'Smokes'],
+              radiusStyle: true,
+              onToggle: (index) {
+                smoking_status = index.toString();
+              }),
+        ],
       ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
-  }
-
-  Widget _buildBMI() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter BMI';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          BMI = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "BMI",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "BMI",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-      ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
-  }
-
-  Widget _buildDiabetesPedigreeFunction() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter DiabetesPedigreeFunction';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          DiabetesPedigreeFunction = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "DiabetesPedigreeFunction",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "DiabetesPedigreeFunction",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-      ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
     );
   }
 
@@ -326,7 +419,7 @@ class _diabetesState extends State<diabetes> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Diabetes Prediction'),
+        title: Text('Brain Stroke Prediction'),
         backgroundColor: Color(0xFF518BB8),
       ),
       body: SingleChildScrollView(
@@ -364,19 +457,23 @@ class _diabetesState extends State<diabetes> {
                         children: <Widget>[
                           _buildage(),
                           SizedBox(height: 20),
-                          _buildpregnancies(),
+                          _buildgender(),
                           SizedBox(height: 20),
-                          _buildglucose(),
+                          _buildhypertension(),
                           SizedBox(height: 20),
-                          _buildBloodPressure(),
+                          _buildheart_disease(),
                           SizedBox(height: 20),
-                          _buildSkinThickness(),
+                          _buildever_married(),
                           SizedBox(height: 20),
-                          _buildInsulin(),
+                          _buildwork_type(),
                           SizedBox(height: 20),
-                          _buildBMI(),
+                          _buildresidence_type(),
                           SizedBox(height: 20),
-                          _buildDiabetesPedigreeFunction(),
+                          _buildavg_glucose_level(),
+                          SizedBox(height: 20),
+                          _buildbmi(),
+                          SizedBox(height: 20),
+                          _buildsmoking_status(),
                           ElevatedButton(
                             onPressed: () async {
                               if (!_formkey.currentState!.validate()) {
