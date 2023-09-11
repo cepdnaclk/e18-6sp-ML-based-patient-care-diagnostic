@@ -9,6 +9,8 @@ import 'package:front_end_cop_mate/models/Vehicle.dart';
 import 'package:front_end_cop_mate/screens/register_vehicle.dart';
 import 'package:front_end_cop_mate/screens/heart.dart';
 import 'package:front_end_cop_mate/screens/lung_cancer.dart';
+import 'package:front_end_cop_mate/screens/diabetes.dart';
+import 'package:front_end_cop_mate/screens/brain_stroke.dart';
 
 void main() {
   return runApp(_ChartApp());
@@ -69,14 +71,14 @@ class _day_summary_graphState extends State<day_summary_graph> {
                   icon: FontAwesomeIcons.heartPulse,
                   space: 20),
               SizedBox(
-                height: 10,
+                height: 0,
               ),
               Container(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(10),
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 10,
+                      height: 0,
                     ),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(80),
@@ -179,10 +181,112 @@ class _day_summary_graphState extends State<day_summary_graph> {
                           ),
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, diabetes.id);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Icon(
+                                FontAwesomeIcons.candyCane,
+                                size: 100.0,
+                                color: Colors.grey,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "   Diabetes",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll<Color>(
+                                Color(0xFFFFFFFF)),
+                            minimumSize:
+                                MaterialStatePropertyAll<Size>(Size(150, 175)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 25,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, brain_stroke.id);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            // crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.brain,
+                                    size: 75.0,
+                                    color: Colors.grey,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                " Brain\nStroke",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.black),
+                              ),
+                              SizedBox(
+                                height: 0,
+                              ),
+                            ],
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll<Color>(
+                                Color(0xFFFFFFFF)),
+                            minimumSize:
+                                MaterialStatePropertyAll<Size>(Size(150, 175)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                      ],
                     )
                   ],
                 ),
               ),
+              SizedBox(
+                height: 50,
+              )
             ],
           ),
         ),

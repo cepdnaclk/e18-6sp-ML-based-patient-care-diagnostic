@@ -9,28 +9,26 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
 
-class heart extends StatefulWidget {
-  const heart({super.key});
-  static const String id = 'heart';
+class brain_stroke extends StatefulWidget {
+  const brain_stroke({super.key});
+  static const String id = 'brain_stroke';
 
   @override
-  State<heart> createState() => _heartState();
+  State<brain_stroke> createState() => _brain_strokeState();
 }
 
-class _heartState extends State<heart> {
+class _brain_strokeState extends State<brain_stroke> {
   @override
+  String Gender = "";
   String age = "";
-  String anaemia = "";
-  String creatinine_phosphokinase = "";
-  String diabetes = "";
-  String ejection_fraction = "";
-  String high_blood_pressure = "";
-  String platelets = "";
-  String serum_creatinine = "";
-  String serum_sodium = "";
-  String sex = "";
-  String smoking = "";
-  String time = "";
+  String hypertension = "";
+  String heart_disease = "";
+  String ever_married = "";
+  String work_type = "";
+  String residence_type = "";
+  String avg_glucose_level = "";
+  String bmi = "";
+  String smoking_status = "";
   bool showSpinner = false;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -72,313 +70,19 @@ class _heartState extends State<heart> {
     );
   }
 
-  Widget _buildanaemia() {
+  Widget _buildgender() {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white54,
       ),
-      height: 60,
+      height: 40,
       child: Row(
         children: [
           SizedBox(
             width: 10,
           ),
-          Text("Do you have anaemia?", style: TextStyle(fontSize: 15)),
-          SizedBox(
-            width: 20,
-          ),
-          ToggleSwitch(
-              minWidth: 70.0,
-              cornerRadius: 20.0,
-              activeBgColors: [
-                [Colors.pink[800]!],
-                [Colors.purple[800]!]
-              ],
-              activeFgColor: Colors.white,
-              inactiveBgColor: Colors.grey,
-              inactiveFgColor: Colors.white,
-              initialLabelIndex: 1,
-              totalSwitches: 2,
-              labels: ['Yes', 'No'],
-              radiusStyle: true,
-              onToggle: (index) {
-                anaemia = index.toString();
-              }),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildcreatinine_phosphokinase() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter creatinine_phosphokinase';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          creatinine_phosphokinase = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "creatinine_phosphokinase",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "creatinine_phosphokinase",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-      ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
-  }
-
-  Widget _buildiabetes() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white54,
-      ),
-      height: 60,
-      child: Row(
-        children: [
-          SizedBox(
-            width: 10,
-          ),
-          Text("Do you have diabetes?", style: TextStyle(fontSize: 15)),
-          SizedBox(
-            width: 20,
-          ),
-          ToggleSwitch(
-              minWidth: 70.0,
-              cornerRadius: 20.0,
-              activeBgColors: [
-                [Colors.pink[800]!],
-                [Colors.purple[800]!]
-              ],
-              activeFgColor: Colors.white,
-              inactiveBgColor: Colors.grey,
-              inactiveFgColor: Colors.white,
-              initialLabelIndex: 1,
-              totalSwitches: 2,
-              labels: ['Yes', 'No'],
-              radiusStyle: true,
-              onToggle: (index) {
-                diabetes = index.toString();
-              }),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildejection_fraction() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter ejection_fraction';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          ejection_fraction = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "ejection_fraction",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "ejection_fraction",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-      ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
-  }
-
-  Widget _buildhigh_blood_pressure() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white54,
-      ),
-      height: 60,
-      child: Row(
-        children: [
-          SizedBox(
-            width: 10,
-          ),
-          Text("High blood pressure?", style: TextStyle(fontSize: 15)),
-          SizedBox(
-            width: 20,
-          ),
-          ToggleSwitch(
-              minWidth: 70.0,
-              cornerRadius: 20.0,
-              activeBgColors: [
-                [Colors.pink[800]!],
-                [Colors.purple[800]!]
-              ],
-              activeFgColor: Colors.white,
-              inactiveBgColor: Colors.grey,
-              inactiveFgColor: Colors.white,
-              initialLabelIndex: 1,
-              totalSwitches: 2,
-              labels: ['Yes', 'No'],
-              radiusStyle: true,
-              onToggle: (index) {
-                high_blood_pressure = index.toString();
-              }),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildplatelets() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter platelets';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          platelets = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "platelets",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "platelets",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-      ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
-  }
-
-  Widget _buildserum_creatinine() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter serum_creatinine';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          serum_creatinine = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "serum_creatinine",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "serum_creatinine",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-      ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
-  }
-
-  Widget _buildserum_sodium() {
-    return TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Enter serum_sodium';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        if (value != null && value.isNotEmpty) {
-          serum_sodium = value;
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: "serum_sodium",
-        icon: Icon(
-          FontAwesomeIcons.ruler,
-          color: Colors.black,
-        ),
-        hintText: "serum_sodium",
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-      ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
-  }
-
-  Widget _buildsex() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white54,
-      ),
-      height: 60,
-      child: Row(
-        children: [
-          SizedBox(
-            width: 10,
-          ),
-          Text("Sex:", style: TextStyle(fontSize: 15)),
+          Text("Gender:", style: TextStyle(fontSize: 15)),
           SizedBox(
             width: 20,
           ),
@@ -397,14 +101,15 @@ class _heartState extends State<heart> {
               labels: ['Male', 'Female'],
               radiusStyle: true,
               onToggle: (index) {
-                sex = index.toString();
+                Gender = index.toString();
+                print('switched to: $index');
               }),
         ],
       ),
     );
   }
 
-  Widget _buildsmoke() {
+  Widget _buildhypertension() {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -416,7 +121,7 @@ class _heartState extends State<heart> {
           SizedBox(
             width: 10,
           ),
-          Text("Do you Smoke?", style: TextStyle(fontSize: 15)),
+          Text("Hyper tension?", style: TextStyle(fontSize: 15)),
           SizedBox(
             width: 20,
           ),
@@ -435,35 +140,190 @@ class _heartState extends State<heart> {
               labels: ['Yes', 'No'],
               radiusStyle: true,
               onToggle: (index) {
-                smoking = index.toString();
+                hypertension = index.toString();
               }),
         ],
       ),
     );
   }
 
-  Widget _buildtime() {
+  Widget _buildheart_disease() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 60,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Heart disease?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Yes', 'No'],
+              radiusStyle: true,
+              onToggle: (index) {
+                heart_disease = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildever_married() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 60,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Ever married?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Yes', 'No'],
+              radiusStyle: true,
+              onToggle: (index) {
+                ever_married = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildwork_type() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 100,
+      width: 400,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Text("Work type?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            height: 10,
+          ),
+          ToggleSwitch(
+              minWidth: 110.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[700]!],
+                [Colors.purple[800]!],
+                [Colors.purple[300]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 3,
+              labels: ['Govt_job', 'Self employed', 'Private'],
+              radiusStyle: true,
+              onToggle: (index) {
+                work_type = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildresidence_type() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 60,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Residence type?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Urban', 'Rural'],
+              radiusStyle: true,
+              onToggle: (index) {
+                residence_type = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildavg_glucose_level() {
     return TextFormField(
       validator: (value) {
         if (value!.isEmpty) {
-          return 'How many times have you had Heart Failures?';
+          return 'Enter avg_glucose_level';
         }
+
         return null;
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          time = value;
+          avg_glucose_level = value;
         }
       },
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
-        labelText: "Heart Failures",
+        labelText: "avg_glucose_level",
         icon: Icon(
-          FontAwesomeIcons.ruler,
+          FontAwesomeIcons.baby,
           color: Colors.black,
         ),
-        hintText: "Heart Failures",
+        hintText: "avg_glucose_level",
         hintStyle: TextStyle(color: Colors.grey),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -478,11 +338,88 @@ class _heartState extends State<heart> {
     );
   }
 
+  Widget _buildbmi() {
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Enter bmi';
+        }
+
+        return null;
+      },
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          bmi = value;
+        }
+      },
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        labelText: "bmi",
+        icon: Icon(
+          FontAwesomeIcons.candyCane,
+          color: Colors.black,
+        ),
+        hintText: "bmi",
+        hintStyle: TextStyle(color: Colors.grey),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+      ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+    );
+  }
+
+  Widget _buildsmoking_status() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 100,
+      width: 400,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Text("Smoking status?", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            height: 10,
+          ),
+          ToggleSwitch(
+              minWidth: 100.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!],
+                [Colors.purple[400]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 3,
+              labels: ['Never', 'Formerley', 'Smokes'],
+              radiusStyle: true,
+              onToggle: (index) {
+                smoking_status = index.toString();
+              }),
+        ],
+      ),
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Heart Disease Prediction'),
+        title: Text('Brain Stroke Prediction'),
         backgroundColor: Color(0xFF518BB8),
       ),
       body: SingleChildScrollView(
@@ -520,27 +457,23 @@ class _heartState extends State<heart> {
                         children: <Widget>[
                           _buildage(),
                           SizedBox(height: 20),
-                          _buildcreatinine_phosphokinase(),
+                          _buildgender(),
                           SizedBox(height: 20),
-                          _buildejection_fraction(),
+                          _buildhypertension(),
                           SizedBox(height: 20),
-                          _buildplatelets(),
+                          _buildheart_disease(),
                           SizedBox(height: 20),
-                          _buildserum_creatinine(),
+                          _buildever_married(),
                           SizedBox(height: 20),
-                          _buildserum_sodium(),
+                          _buildwork_type(),
                           SizedBox(height: 20),
-                          _buildtime(),
+                          _buildresidence_type(),
                           SizedBox(height: 20),
-                          _buildsex(),
+                          _buildavg_glucose_level(),
                           SizedBox(height: 20),
-                          _buildiabetes(),
+                          _buildbmi(),
                           SizedBox(height: 20),
-                          _buildhigh_blood_pressure(),
-                          SizedBox(height: 20),
-                          _buildanaemia(),
-                          SizedBox(height: 20),
-                          _buildsmoke(),
+                          _buildsmoking_status(),
                           ElevatedButton(
                             onPressed: () async {
                               if (!_formkey.currentState!.validate()) {
