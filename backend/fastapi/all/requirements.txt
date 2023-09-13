@@ -1,6 +1,6 @@
 pandas
 uvicorn
-FastAPI
+fastapi
 pickle
 numpy
 array
