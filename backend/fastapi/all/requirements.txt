@@ -1,6 +1,5 @@
 pandas
 uvicorn
 fastapi
-pickle
 numpy
 array
