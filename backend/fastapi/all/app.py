@@ -16,7 +16,7 @@ import numpy
 import array as arr
 
 app = FastAPI()
-server = app.server
+
 pickle_in = open("all.pkl", "rb")
 all = pickle.load(pickle_in)
 
@@ -96,10 +96,6 @@ def predict_all(data:All):
     return {
         'prediction':prediciton
     }
-
-if __name__ == '__main__':
-    app.run_server(debug=False)
-
 
 
 
