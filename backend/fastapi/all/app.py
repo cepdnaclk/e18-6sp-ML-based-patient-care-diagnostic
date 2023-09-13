@@ -5,9 +5,6 @@ symptoms_array_final = ['fever','cough','sore_throat','runny_or_stuffy_nose','mu
 
 #import libraries
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import train_test_split
-from sklearn import metrics
 import uvicorn
 from fastapi import FastAPI
 from Alls import All
