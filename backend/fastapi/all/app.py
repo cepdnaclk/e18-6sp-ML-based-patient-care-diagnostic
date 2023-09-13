@@ -11,6 +11,7 @@ from Alls import All
 import pickle
 import numpy
 import array as arr
+import sklearn
 
 app = FastAPI()
 
