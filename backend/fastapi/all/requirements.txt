@@ -1,0 +1,6 @@
+pandas
+uvicorn
+FastAPI
+pickle
+numpy
+array
