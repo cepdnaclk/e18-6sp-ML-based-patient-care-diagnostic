@@ -56,6 +56,273 @@ sympotoms_indirect_disease = ['fever',
  'pain_in_the_upper_abdomen',
  'bloody_stool']
 
+cure_and_disease = {'flu': 'over-the-counter medications,rest,fluids',
+ 'bronchitis': 'antibiotics,over-the-counter medications,rest,fluids',
+ 'pneumonia': 'antibiotics,over-the-counter medications,rest,fluids',
+ 'heart attack': 'emergency medical services',
+ 'stroke': 'emergency medical services',
+ 'cancer': 'surgery,chemotherapy,radiation therapy ',
+ 'diabetes': 'diet,exercise,medication',
+ "alzheimer's disease": "there is no cure for alzheimer's disease,but there are treatments that can help manage the symptoms",
+ 'arthritis': 'medication,physical therapy,lifestyle changes',
+ 'adenovirus': 'antibiotics,over-the-counter medications,rest,fluids',
+ 'aflatoxicosis': 'there is no cure for aflatoxicosis,but treatment may include supportive care,liver transplantation',
+ 'alcoholism': 'treatment for alcoholism may include counseling,medication,support groups',
+ 'allergic rhinitis': 'over-the-counter medications,allergy shots',
+ 'anxiety disorder': 'treatment for anxiety disorders may include therapy,medication,combination of both',
+ 'appendicitis': 'appendectomy',
+ 'asperger syndrome': 'there is no cure for asperger syndrome,but there are treatments that can help manage the symptoms',
+ 'asthma': 'treatment for asthmmay include medication,lifestyle changes,allergy shots',
+ 'bacterial meningitis': 'antibiotics',
+ 'bipolar disorder': 'treatment for bipolar disorder may include medication,therapy,combination of both',
+ 'bladder cancer': 'surgery,chemotherapy,radiation therapy',
+ 'blood clot': 'treatment for blood clot may include medication,surgery,combination of both',
+ 'bursitis': 'medication,rest,ice,compression,elevation',
+ 'cervical cancer': 'surgery,chemotherapy,radiation therapy',
+ 'chickenpox': 'antiviral medication,over-the-counter medications,rest,fluids',
+ 'chronic obstructive pulmonary disease (copd)': 'treatment for copd may include medication,lifestyle changes,oxygen therapy',
+ 'cholesterol': 'diet,exercise,medication',
+ 'common cold': 'over-the-counter medications,rest,fluids',
+ 'conjunctivitis': 'over-the-counter medications,warm compresses',
+ 'depression ': 'treatment for depression may include medication,therapy,combination of both',
+ 'diarrhea': 'over-the-counter medications,rest,fluids',
+ 'eating disorder': 'treatment for eating disorders may include therapy,medication,support groups',
+ 'epilepsy': 'medication,surgery',
+ 'fever': 'over-the-counter medications,rest,fluids',
+ 'food poisoning': 'over-the-counter medications,rest,fluids',
+ 'gallstones': 'surgery',
+ 'gonorrhea': 'antibiotics',
+ 'heart disease': 'treatment for heart disease may include medication,lifestyle changes,surgery',
+ 'hepatitis': 'treatment for hepatitis may include medication,rest,lifestyle changes',
+ 'herpes': 'there is no cure for herpes,but there are treatments that can help manage the symptoms',
+ 'influenza': 'over-the-counter medications,rest,fluids',
+ 'irritable bowel syndrome (ibs)': 'treatment for ibs may include diet,lifestyle changes,medication',
+ 'kidney stones ': 'surgery',
+ 'lung cancer': 'surgery,chemotherapy,radiation therapy',
+ 'malaria': 'antimalarial drugs',
+ 'measles': 'measles vaccine',
+ 'meningitis': 'antibiotics',
+ 'mononucleosis': 'there is no cure for mononucleosis,but symptoms can be treated with rest,fluids,over-the-counter medications',
+ 'rabies': 'rabies vaccine',
+ 'salmonella': 'antibiotics',
+ 'shingles': 'antiviral medication',
+ 'tuberculosis (tb)': 'antibiotics',
+ 'urinary tract infection (uti)': 'antibiotics',
+ 'varicose veins': 'surgery,compression stockings,lifestyle changes',
+ 'warts ': 'over-the-counter medications,prescription medications,cryotherapy,laser therapy',
+ 'yeast infection': 'over-the-counter medications,prescription medications',
+ 'acanthamoebkeratitis': 'antibiotics,antifungals,surgery',
+ 'acute appendicitis': 'appendectomy',
+ 'acute kidney injury (aki) ': 'treatment for the underlying cause,such as dehydration,infection,medication side effect ',
+ 'anemia': 'treatment for anemidepends on the type of anemia,but may include medication,blood transfusions,surgery',
+ 'aortic aneurysm': 'surgery',
+ 'bacterial meningitis ': 'antibiotics',
+ 'cervical cancer ': 'surgery,chemotherapy,radiation therapy',
+ 'colorectal cancer': 'surgery,chemotherapy,radiation therapy',
+ 'dementia': 'there is no cure for dementia,but there are treatments that can help manage the symptoms',
+ 'erectile dysfunction': 'medication,lifestyle changes,surgery ',
+ 'fibromyalgi': 'medication,lifestyle changes ',
+ 'glaucoma': 'medication,surgery ',
+ 'heart failure': 'medication,lifestyle changes,surgery',
+ 'kidney disease': 'treatment for the underlying cause,such as high blood pressure,diabetes,an infection',
+ 'lung disease': 'treatment for the underlying cause,such as asthma,chronic obstructive pulmonary disease (copd),pneumonia',
+ "parkinson's disease": 'medication,lifestyle changes',
+ 'peptic ulcer disease ': 'medication,lifestyle changes,surgery ',
+ 'peripheral artery disease': 'medication,lifestyle changes,surgery',
+ 'prostate cancer': 'surgery,radiation therapy,hormone therapy',
+ 'rheumatoid arthritis': 'medication,lifestyle changes',
+ 'stomach cancer': 'surgery,chemotherapy,radiation therapy',
+ 'thyroid cancer': 'surgery,radiation therapy,hormone therapy',
+ 'ulcerative colitis': 'medication,surgery',
+ 'warts': 'over-the-counter medications,prescription medications,cryotherapy,laser therapy',
+ 'atopic dermatitis': 'medication,lifestyle changes',
+ 'celiac disease': 'gluten-free diet',
+ 'chronic kidney disease': 'treatment for the underlying cause,such as high blood pressure,diabetes,an infection',
+ "crohn's disease": 'medication,surgery',
+ 'epilepsy ': 'medication,surgery',
+ 'fibromyalgia': 'medication,lifestyle changes',
+ "graves' disease": 'medication,surgery',
+ "hashimoto's thyroiditis ": 'medication',
+ 'lupus': 'medication,lifestyle changes'}
+
+doctor_and_disease = {'flu': 'family doctor,urgent care',
+ 'bronchitis': 'family doctor,pulmonologist',
+ 'pneumonia': 'family doctor,pulmonologist',
+ 'heart attack': 'cardiologist',
+ 'stroke': 'neurologist ',
+ 'cancer': 'oncologist',
+ 'diabetes': 'endocrinologist',
+ "alzheimer's disease": 'neurologist',
+ 'arthritis': 'rheumatologist',
+ 'adenovirus': 'family doctor,urgent care',
+ 'aflatoxicosis': 'gastroenterologist',
+ 'alcoholism': 'psychiatrist,addiction specialist',
+ 'allergic rhinitis': 'allergist',
+ 'anxiety disorder': 'psychologist,psychiatrist',
+ 'appendicitis': 'surgeon ',
+ 'asperger syndrome': 'psychologist,psychiatrist',
+ 'asthma': 'allergist,pulmonologist',
+ 'bacterial meningitis': 'neurologist,neurosurgeon',
+ 'bipolar disorder': 'psychologist,psychiatrist',
+ 'bladder cancer': 'urologist',
+ 'blood clot': 'cardiologist,hematologist',
+ 'bursitis': 'family doctor,orthopedist',
+ 'cervical cancer': 'gynecologist',
+ 'chickenpox': 'family doctor,urgent care',
+ 'chronic obstructive pulmonary disease (copd)': 'pulmonologist',
+ 'cholesterol': 'cardiologist',
+ 'common cold': 'family doctor,urgent care',
+ 'conjunctivitis': 'family doctor,ophthalmologist',
+ 'depression ': 'psychologist,psychiatrist',
+ 'diarrhea': 'family doctor,urgent care',
+ 'eating disorder': 'psychologist,psychiatrist',
+ 'epilepsy': 'neurologist ',
+ 'fever': 'family doctor,urgent care',
+ 'food poisoning': 'family doctor,urgent care',
+ 'gallstones': 'surgeon ',
+ 'gonorrhea': 'urologist,gynecologist',
+ 'heart disease': 'cardiologist',
+ 'hepatitis': 'gastroenterologist',
+ 'herpes': 'urologist,gynecologist',
+ 'influenza': 'family doctor,urgent care',
+ 'irritable bowel syndrome (ibs)': 'family doctor,gastroenterologist',
+ 'kidney stones ': 'urologist',
+ 'lung cancer': 'oncologist',
+ 'malaria': 'family doctor,urgent care',
+ 'measles': 'family doctor,urgent care',
+ 'meningitis': 'neurologist,neurosurgeon',
+ 'mononucleosis': 'family doctor,urgent care',
+ 'rabies': 'doctor,urgent care',
+ 'salmonella': 'family doctor,urgent care ',
+ 'shingles': 'family doctor,dermatologist ',
+ 'tuberculosis (tb)': 'family doctor,pulmonologist',
+ 'urinary tract infection (uti)': 'urologist',
+ 'varicose veins': 'vascular surgeon',
+ 'warts ': 'dermatologist',
+ 'yeast infection': 'urologist,gynecologist',
+ 'acanthamoebkeratitis': 'ophthalmologist ',
+ 'acute appendicitis': 'surgeon',
+ 'acute kidney injury (aki) ': 'nephrologist ',
+ 'anemia': 'hematologist',
+ 'aortic aneurysm': 'vascular surgeon',
+ 'bacterial meningitis ': 'neurologist,neurosurgeon',
+ 'cervical cancer ': 'gynecologist ',
+ 'colorectal cancer': 'gastroenterologist',
+ 'dementia': 'neurologist ',
+ 'erectile dysfunction': 'urologist',
+ 'fibromyalgi': 'rheumatologist ',
+ 'glaucoma': 'ophthalmologist',
+ 'heart failure': 'cardiologist',
+ 'kidney disease': 'nephrologist',
+ 'lung disease': 'pulmonologist',
+ "parkinson's disease": 'neurologist ',
+ 'peptic ulcer disease ': 'gastroenterologist',
+ 'peripheral artery disease': 'vascular surgeon',
+ 'prostate cancer': 'urologist',
+ 'rheumatoid arthritis': 'rheumatologist',
+ 'stomach cancer': 'gastroenterologist ',
+ 'thyroid cancer': 'endocrinologist',
+ 'ulcerative colitis': 'gastroenterologist ',
+ 'warts': 'dermatologist',
+ 'atopic dermatitis': 'dermatologist',
+ 'celiac disease': 'gastroenterologist',
+ 'chronic kidney disease': 'nephrologist',
+ "crohn's disease": 'gastroenterologist',
+ 'epilepsy ': 'neurologist',
+ 'fibromyalgia': 'rheumatologist',
+ "graves' disease": 'endocrinologist',
+ "hashimoto's thyroiditis ": 'endocrinologist',
+ 'lupus': 'rheumatologist '}
+
+risk_and_disease = {'flu': 'low (0.1%',
+ 'bronchitis': 'low (0.5%',
+ 'pneumonia': 'moderate (1%)',
+ 'heart attack': 'high (20%)',
+ 'stroke': 'high (15%)',
+ 'cancer': 'varies depending on the type of cancer',
+ 'diabetes': 'high (25%)',
+ "alzheimer's disease": 'high (70%)',
+ 'arthritis': 'varies depending on the type of arthritis',
+ 'adenovirus': 'low (0.1%)',
+ 'aflatoxicosis': 'high (70%)',
+ 'alcoholism': 'high (25%)',
+ 'allergic rhinitis': 'low (0.1%)',
+ 'anxiety disorder': 'varies depending on the type of anxiety disorder',
+ 'appendicitis': 'high (20%)',
+ 'asperger syndrome': 'varies',
+ 'asthma': 'varies',
+ 'bacterial meningitis': 'high (20%)',
+ 'bipolar disorder': 'varies',
+ 'bladder cancer': 'high (70%)',
+ 'blood clot': 'high (20%)',
+ 'bursitis': 'varies depending on the bursa',
+ 'cervical cancer': 'high (70%)',
+ 'chickenpox': 'low (0.1%)',
+ 'chronic obstructive pulmonary disease (copd)': 'varies depending on the type of copd ',
+ 'cholesterol': 'varies depending on the level of cholesterol',
+ 'common cold': 'low (0.1%)',
+ 'conjunctivitis': 'low (0.1%)',
+ 'depression ': 'varies',
+ 'diarrhea': 'low (0.1%)',
+ 'eating disorder': 'varies depending on the type of eating disorder',
+ 'epilepsy': 'varies depending on the type of epilepsy',
+ 'fever': 'low (0.1%)',
+ 'food poisoning': 'low (0.1%)',
+ 'gallstones': 'high (20%)',
+ 'gonorrhea': 'high (70%)',
+ 'heart disease': 'high (20%)',
+ 'hepatitis': 'varies depending on the type of hepatitis',
+ 'herpes': 'high (70%)',
+ 'influenza': 'low (0.1%)',
+ 'irritable bowel syndrome (ibs)': 'varies',
+ 'kidney stones ': 'high (20%)',
+ 'lung cancer': 'high (70%)',
+ 'malaria': 'high (20%)',
+ 'measles': 'high (70%)',
+ 'meningitis': 'high (20%)',
+ 'mononucleosis': 'low (0.1%)',
+ 'rabies': 'high (70%)',
+ 'salmonella': 'low (0.1%)',
+ 'shingles': 'low (0.1%)',
+ 'tuberculosis (tb)': 'high (20%)',
+ 'urinary tract infection (uti)': 'low (0.1%)',
+ 'varicose veins': 'varies',
+ 'warts ': 'low (0.1%)',
+ 'yeast infection': 'low (0.1%)',
+ 'acanthamoebkeratitis': 'low (0.1%',
+ 'acute appendicitis': 'high (20%)',
+ 'acute kidney injury (aki) ': 'varies',
+ 'anemia': 'varies depending on the type of anemia',
+ 'aortic aneurysm': 'high (20%)',
+ 'bacterial meningitis ': 'high (20%)',
+ 'cervical cancer ': 'high (70%)',
+ 'colorectal cancer': 'high (70%)',
+ 'dementia': 'varies',
+ 'erectile dysfunction': 'varies',
+ 'fibromyalgi': 'varies',
+ 'glaucoma': 'varies',
+ 'heart failure': 'high (20%)',
+ 'kidney disease': 'varies',
+ 'lung disease': 'varies',
+ "parkinson's disease": 'varies',
+ 'peptic ulcer disease ': 'varies',
+ 'peripheral artery disease': 'varies',
+ 'prostate cancer': 'high (70%)',
+ 'rheumatoid arthritis': 'varies',
+ 'stomach cancer': 'high (70%)',
+ 'thyroid cancer': 'high (70%)',
+ 'ulcerative colitis': 'varies',
+ 'warts': 'low (0.1%)',
+ 'atopic dermatitis': 'varies',
+ 'celiac disease': 'varies',
+ 'chronic kidney disease': 'varies',
+ "crohn's disease": 'varies',
+ 'epilepsy ': 'varies',
+ 'fibromyalgia': 'varies',
+ "graves' disease": 'varies',
+ "hashimoto's thyroiditis ": 'varies',
+ 'lupus': 'varies'}
+
 #import libraries
 import pandas as pd
 import uvicorn
@@ -109,9 +376,9 @@ def predict_all(data:All):
         if(i==','):
             input_array.append(word)
             word=""
-        elif not (i==' '):
+        else:
             word=word+i
-
+    
     input_array_final = []
     
     for i in range(len(input_array)):
@@ -126,11 +393,16 @@ def predict_all(data:All):
         
         input_array_final.append(string)
 
+    print(input_array_final)
+
     for i in input_array_final:
         if(i in sympotoms_direct_disease_dict):
-            print(sympotoms_direct_disease_dict.get(i))
+            prediction = sympotoms_direct_disease_dict.get(i)
             return {
-                'prediciton':sympotoms_direct_disease_dict.get(i)
+                'prediciton':sympotoms_direct_disease_dict.get(i),
+                'Cure': cure_and_disease.get(prediction),
+                'Doctor': doctor_and_disease.get(prediction),
+                'Risk': risk_and_disease.get(prediction),
             }
 
     labels=[]
@@ -143,28 +415,15 @@ def predict_all(data:All):
 
     
     prediciton = all.predict([labels])[0]
-    print(prediciton)
     return {
-        'prediction':prediciton
+        'prediction':prediciton,
+        'Cure': cure_and_disease.get(prediciton),
+        'Doctor': doctor_and_disease.get(prediciton),
+        'Risk': risk_and_disease.get(prediciton),
     }
 
 # if __name__ == '__app__':
 #     uvicorn.run(app, host='127.0.0.1', port=8000)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
