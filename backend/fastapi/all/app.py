@@ -419,8 +419,8 @@ def predict_all(data:All):
         'Risk': risk_and_disease.get(prediciton),
     }
 
-# if __name__ == '__app__':
-#     uvicorn.run(app, host='127.0.0.1', port=8000)
+if __name__ == '__app__':
+    uvicorn.run(app, host='127.0.0.1', port=8000)
 
 
 
