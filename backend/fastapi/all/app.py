@@ -329,11 +329,26 @@ import pickle
 import numpy
 import array as arr
 import sklearn
+import json
+from lung_cancer import LungCancer
+from heart_failure import HeartFailure
+from diabetes import Diabetes
+
+
 
 app = FastAPI()
 
 pickle_in = open("all_svm.pkl", "rb")
 all = pickle.load(pickle_in)
+
+pickle_in= open("lung_cancer.pkl","rb")
+lung_cancer= pickle.load(pickle_in)
+
+pickle_in= open("heart.pkl","rb")
+heart_failure= pickle.load(pickle_in)
+
+pickle_in= open("diabetes.pkl","rb")
+diabetes= pickle.load(pickle_in)
 
 # Dataset loading and exploratory data analysis
 df = pd.read_csv('formatted_dataset_all.csv')
@@ -419,8 +434,45 @@ def predict_all(data:All):
         'Risk': risk_and_disease.get(prediciton),
     }
 
-# if __name__ == '__app__':
-#     uvicorn.run(app, host='127.0.0.1', port=8000)
+#predict lung cancer
+@app.post('/lung_cancer')
+def predict_lung_cancer(data:LungCancer):
+    data1 = data.dict()
+    prediction = lung_cancer.predict([[data1["Age"],data1["Gender"],data1["Air_Pollution"],data1["Alcohol_use"],data1["Dust_Allergy"],data1["OccuPational_Hazards"],data1["Genetic_Risk"],data1["chronic_Lung_Disease"],data1["Balanced_Diet"],data1["Obesity"],data1["Smoking"],data1["Passive_Smoker"],data1["Chest_Pain"],data1["Coughing_of_Blood"],data1["Fatigue"],data1["Weight_Loss"],data1["Shortness_of_Breath"],data1["Wheezing"],data1["Swallowing_Difficulty"],data1["Clubbing_of_Finger_Nails"],data1["Frequent_Cold"],data1["Dry_Cough"],data1["Snoring"]]])
+    returnPred = {"prediction":prediction[0]}
+    print(returnPred)
+    json_to_return = json.dumps(returnPred, indent=1)
+    parse = json.loads(json_to_return)
+    return parse
+
+
+#predict lung cancer
+@app.post('/heart_failure')
+def predict_heart_failure(data:HeartFailure):
+    data1 = data.dict()
+    prediction = heart_failure.predict([[data1["age"],data1["anaemia"],data1["creatinine_phosphokinase"],data1["diabetes"],data1["ejection_fraction"],data1["high_blood_pressure"],data1["platelets"],data1["serum_creatinine"],data1["serum_sodium"],data1["sex"],data1["smoking"],data1["time"]]])
+    returnPred = {"prediction":str(prediction[0])}
+    print(returnPred)
+    json_to_return = json.dumps(returnPred, indent=1)
+    parse = json.loads(json_to_return)
+    return parse
+
+#predict diabetes
+@app.post('/diabetes')
+def predict_heart_failure(data:Diabetes):
+    data1 = data.dict()
+    prediction = diabetes.predict([[data1["Pregnancies"],data1["Glucose"],data1["BloodPressure"],data1["SkinThickness"],data1["Insulin"],data1["BMI"],data1["DiabetesPedigreeFunction"],data1["Age"]]])
+    returnPred = {"prediction":str(prediction[0])}
+    print(returnPred)
+    json_to_return = json.dumps(returnPred, indent=1)
+    parse = json.loads(json_to_return)
+    return parse
+
+
+
+
+if __name__ == '__app__':
+    uvicorn.run(app, host='127.0.0.1', port=8000)
 
 
 
