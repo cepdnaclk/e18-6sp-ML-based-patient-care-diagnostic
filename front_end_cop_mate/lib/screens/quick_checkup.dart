@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:filter_list/filter_list.dart';
 import 'package:front_end_cop_mate/screens/welcome_screen.dart';
 import 'package:front_end_cop_mate/screens/pop_disease.dart';
+import 'package:front_end_cop_mate/models/Diagnosis.dart';
+import 'package:http/http.dart' as http;
 
 class quick_checkup extends StatelessWidget {
   static const String id = 'quick_checkup';
@@ -12,33 +16,86 @@ class quick_checkup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FilterListWidget<User_1>(
-        listData: userList,
-        selectedListData: selectedUserList,
-        onApplyButtonClick: (list) {
-          // do something with list ..
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => pop_disease()));
-        },
-        choiceChipLabel: (item) {
-          /// Used to display text on chip
-          return item!.name;
-        },
-        validateSelectedItem: (list, val) {
-          ///  identify if item is selected or no
-          var s = list;
-          if (s != null) {
-            return list!.contains(val); // Safe
-          }
-          return false;
-        },
-        onItemSearch: (user, query) {
-          /// When search query change in search bar then this method will be called
-          ///
-          /// Check if items contains query
-          print("line434343");
-          return user.name!.toLowerCase().contains(query.toLowerCase());
-        },
+      body: Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.purple),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            color: Color(0xFFffbfe7)),
+        child: FilterListWidget<User_1>(
+          listData: userList,
+          selectedListData: selectedUserList,
+          onApplyButtonClick: (list) async {
+            // do something with list ..
+
+            var length = 0;
+            String symptoms = "";
+            if (list != null) {
+              length = list.length;
+            }
+            for (var i = 0; i < length; i++) {
+              // TO DO
+              var currentElement = list![i].name;
+
+              if (currentElement != null) {
+                symptoms = symptoms + currentElement + ",";
+              }
+            }
+
+            Map data = {"symptoms": symptoms};
+
+            var body = jsonEncode(data);
+
+            if (true) {
+              final response = await http.post(
+                Uri.parse(
+                    'https://thamish-ml-based-patient-care.onrender.com/predict_all'),
+                headers: <String, String>{
+                  'Content-Type': 'application/json; charset=UTF-8',
+                },
+                body: body,
+              );
+              if (response.statusCode == 200) {
+                var prediction = jsonDecode(response.body);
+                print(prediction["prediction"]);
+                print(prediction["Cure"]);
+                print(prediction["Doctor"]);
+                print(prediction["Risk"]);
+
+                Diagnosis diagnosis = Diagnosis(
+                    disease: prediction["prediction"],
+                    cure: prediction["Cure"],
+                    doctor: prediction["Doctor"],
+                    riskFactor: prediction["Risk"]);
+
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => pop_disease(
+                          diagnosis: diagnosis,
+                        )));
+              } else {
+                print(response.statusCode);
+              }
+            }
+          },
+          choiceChipLabel: (item) {
+            /// Used to display text on chip
+            return item!.name;
+          },
+          validateSelectedItem: (list, val) {
+            ///  identify if item is selected or no
+            var s = list;
+            if (s != null) {
+              return list!.contains(val); // Safe
+            }
+            return false;
+          },
+          onItemSearch: (user, query) {
+            /// When search query change in search bar then this method will be called
+            ///
+            /// Check if items contains query
+            print("line434343");
+            return user.name!.toLowerCase().contains(query.toLowerCase());
+          },
+        ),
       ),
     );
   }
