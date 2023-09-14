@@ -19,18 +19,18 @@ class heart extends StatefulWidget {
 
 class _heartState extends State<heart> {
   @override
-  String age = "";
-  String anaemia = "";
-  String creatinine_phosphokinase = "";
-  String diabetes = "";
-  String ejection_fraction = "";
-  String high_blood_pressure = "";
-  String platelets = "";
-  String serum_creatinine = "";
-  String serum_sodium = "";
-  String sex = "";
-  String smoking = "";
-  String time = "";
+  double age = 0;
+  double anaemia = 0;
+  double creatininePhosphokinase = 0;
+  double diabetes = 0;
+  double ejectionFraction = 0;
+  double highBloodPressure = 0;
+  double platelets = 0;
+  double serumCreatinine = 0;
+  double serumSodium = 0;
+  double sex = 0;
+  double smoking = 0;
+  double time = 0;
   bool showSpinner = false;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -46,7 +46,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          age = value;
+          age = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -103,7 +103,12 @@ class _heartState extends State<heart> {
               labels: ['Yes', 'No'],
               radiusStyle: true,
               onToggle: (index) {
-                anaemia = index.toString();
+                if (index == 1) {
+                  index = 0;
+                } else {
+                  index = 1;
+                }
+                anaemia = double.parse(index.toString());
               }),
         ],
       ),
@@ -120,7 +125,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          creatinine_phosphokinase = value;
+          creatininePhosphokinase = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -177,7 +182,12 @@ class _heartState extends State<heart> {
               labels: ['Yes', 'No'],
               radiusStyle: true,
               onToggle: (index) {
-                diabetes = index.toString();
+                if (index == 1) {
+                  index = 0;
+                } else {
+                  index = 1;
+                }
+                diabetes = double.parse(index.toString());
               }),
         ],
       ),
@@ -194,7 +204,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          ejection_fraction = value;
+          ejectionFraction = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -251,7 +261,12 @@ class _heartState extends State<heart> {
               labels: ['Yes', 'No'],
               radiusStyle: true,
               onToggle: (index) {
-                high_blood_pressure = index.toString();
+                if (index == 1) {
+                  index = 0;
+                } else {
+                  index = 1;
+                }
+                highBloodPressure = double.parse(index.toString());
               }),
         ],
       ),
@@ -268,7 +283,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          platelets = value;
+          platelets = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -304,7 +319,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          serum_creatinine = value;
+          serumCreatinine = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -340,7 +355,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          serum_sodium = value;
+          serumSodium = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -397,7 +412,12 @@ class _heartState extends State<heart> {
               labels: ['Male', 'Female'],
               radiusStyle: true,
               onToggle: (index) {
-                sex = index.toString();
+                if (index == 1) {
+                  index = 0;
+                } else {
+                  index = 1;
+                }
+                sex = double.parse(index.toString());
               }),
         ],
       ),
@@ -435,7 +455,12 @@ class _heartState extends State<heart> {
               labels: ['Yes', 'No'],
               radiusStyle: true,
               onToggle: (index) {
-                smoking = index.toString();
+                if (index == 1) {
+                  index = 0;
+                } else {
+                  index = 1;
+                }
+                smoking = double.parse(index.toString());
               }),
         ],
       ),
@@ -452,7 +477,7 @@ class _heartState extends State<heart> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          time = value;
+          time = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -483,7 +508,7 @@ class _heartState extends State<heart> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Heart Disease Prediction'),
-        backgroundColor: Color(0xFF518BB8),
+        backgroundColor: Color(0xFFAC6EBB),
       ),
       body: SingleChildScrollView(
         child: ModalProgressHUD(
@@ -518,8 +543,8 @@ class _heartState extends State<heart> {
                       key: _formkey,
                       child: Column(
                         children: <Widget>[
-                          _buildage(),
-                          SizedBox(height: 20),
+                          //_buildage(),
+                          //SizedBox(height: 20),
                           _buildcreatinine_phosphokinase(),
                           SizedBox(height: 20),
                           _buildejection_fraction(),
@@ -530,10 +555,8 @@ class _heartState extends State<heart> {
                           SizedBox(height: 20),
                           _buildserum_sodium(),
                           SizedBox(height: 20),
-                          _buildtime(),
-                          SizedBox(height: 20),
-                          _buildsex(),
-                          SizedBox(height: 20),
+                          // _buildsex(),
+                          // SizedBox(height: 20),
                           _buildiabetes(),
                           SizedBox(height: 20),
                           _buildhigh_blood_pressure(),
@@ -550,30 +573,41 @@ class _heartState extends State<heart> {
 
                               final response = await http.post(
                                 Uri.parse(
-                                    'https://ml-model-api15.onrender.com/heart_disease'),
+                                    'https://thamish-ml-based-patient-care.onrender.com/heart_failure'),
                                 headers: <String, String>{
                                   'Content-Type':
                                       'application/json; charset=UTF-8',
                                 },
-                                body: jsonEncode(<String, String>{
-                                  "age": "75",
-                                  "anaemia": "0",
-                                  "creatinine_phosphokinase": "582",
-                                  "diabetes": "0",
-                                  "ejection_fraction": "20",
-                                  "high_blood_pressure": "21",
-                                  "platelets": "265000.03",
-                                  "serum_creatinine": "1.9",
-                                  "serum_sodium": "130",
-                                  "sex": "1",
-                                  "smoking": "0",
-                                  "time": "4"
+                                body: jsonEncode(<String, double>{
+                                  "age": age,
+                                  "anaemia": anaemia,
+                                  "creatinine_phosphokinase":
+                                      creatininePhosphokinase,
+                                  "diabetes": diabetes,
+                                  "ejection_fraction": ejectionFraction,
+                                  "high_blood_pressure": highBloodPressure,
+                                  "platelets": platelets,
+                                  "serum_creatinine": serumCreatinine,
+                                  "serum_sodium": serumSodium,
+                                  "sex": sex,
+                                  "smoking": smoking,
+                                  "time": time
                                 }),
                               );
                               print(response.statusCode);
                               if (response.statusCode == 200) {
+                                print(response.body);
                                 var prediction = jsonDecode(response.body);
-                                int predict = prediction["prediction"];
+                                var predict = prediction["prediction"];
+                                var message = "";
+                                print(predict);
+                                if (double.parse(predict) == 1) {
+                                  message =
+                                      "You have a High chance of having a Heart Disease.";
+                                } else {
+                                  message =
+                                      "You have a Low chance of having a Heart Disease.";
+                                }
                                 print(prediction["prediction"].runtimeType);
                                 showDialog<void>(
                                   context: context,
@@ -581,12 +615,11 @@ class _heartState extends State<heart> {
                                       false, // user must tap button!
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: const Text('Successful!'),
+                                      title: const Text('Diagnosis'),
                                       content: SingleChildScrollView(
                                         child: ListBody(
                                           children: <Widget>[
-                                            Text("Prediction:" +
-                                                predict.toString()),
+                                            Text(message),
                                           ],
                                         ),
                                       ),

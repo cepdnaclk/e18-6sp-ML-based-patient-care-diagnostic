@@ -8,10 +8,17 @@ import 'package:front_end_cop_mate/screens/settings.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:front_end_cop_mate/elements/heading.dart';
 import 'package:http/http.dart' as http;
+import 'package:toggle_switch/toggle_switch.dart';
+import 'package:flutter/services.dart';
+import 'package:front_end_cop_mate/models/User_2.dart';
 
 class register_vehicle extends StatefulWidget {
-  const register_vehicle({Key? key}) : super(key: key);
   static const String id = 'register_vehicle';
+  final User_2 user_2;
+
+  const register_vehicle({
+    required this.user_2,
+  });
 
   @override
   State<register_vehicle> createState() => _register_vehicleState();
@@ -24,8 +31,165 @@ class _register_vehicleState extends State<register_vehicle> {
   String name = "";
   String telephone = "";
   bool showSpinner = false;
+  String Gender = "";
+  String weight = "";
+  String height = "";
+  String age = "";
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
+  Widget _buildgender() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 40,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Gender:", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Male', 'Female'],
+              radiusStyle: true,
+              onToggle: (index) {
+                if (index == 1) {
+                  index = 0;
+                } else {
+                  index = 1;
+                }
+                Gender = (index.toString());
+                print('switched to: $index');
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildage() {
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Enter age';
+        }
+
+        return null;
+      },
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          age = (value);
+        }
+      },
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        labelText: "Age",
+        icon: Icon(
+          FontAwesomeIcons.child,
+          color: Colors.black,
+        ),
+        hintText: "Age",
+        hintStyle: TextStyle(color: Colors.grey),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+      ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+    );
+  }
+
+  Widget _buildheight() {
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Enter Height';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          height = (value);
+        }
+      },
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        labelText: "Height",
+        icon: Icon(
+          FontAwesomeIcons.ruler,
+          color: Colors.black,
+        ),
+        hintText: "Height",
+        hintStyle: TextStyle(color: Colors.grey),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+      ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+    );
+  }
+
+  Widget _buildweight() {
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Enter Weight';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          weight = (value);
+        }
+      },
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        labelText: "weight",
+        icon: Icon(
+          FontAwesomeIcons.ruler,
+          color: Colors.black,
+        ),
+        hintText: "weight",
+        hintStyle: TextStyle(color: Colors.grey),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+      ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+    );
+  }
 
   Widget _buildemailField() {
     return TextFormField(
@@ -170,7 +334,7 @@ class _register_vehicleState extends State<register_vehicle> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Virtual Aid'),
-        backgroundColor: Color(0xFF518BB8),
+        backgroundColor: Color(0xFFAC6EBB),
       ),
       body: SingleChildScrollView(
         child: ModalProgressHUD(
@@ -182,7 +346,7 @@ class _register_vehicleState extends State<register_vehicle> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    Color(0xFF234E70),
+                    Color(0xFF8008CA),
                     Colors.white,
                   ],
                 ),
@@ -193,7 +357,7 @@ class _register_vehicleState extends State<register_vehicle> {
                     height: 10,
                   ),
                   heading(
-                      string: "Register",
+                      string: "Change Details",
                       icon: FontAwesomeIcons.user,
                       space: 40),
                   SizedBox(
@@ -205,13 +369,13 @@ class _register_vehicleState extends State<register_vehicle> {
                       key: _formkey,
                       child: Column(
                         children: <Widget>[
-                          _buildvehiclenumber(),
+                          _buildage(),
                           SizedBox(height: 20),
-                          _buildname(),
+                          _buildgender(),
                           SizedBox(height: 20),
-                          _buildemailField(),
+                          _buildheight(),
                           SizedBox(height: 20),
-                          _buildtelephonenumber(),
+                          _buildweight(),
                           SizedBox(height: 20),
                           SizedBox(height: 20),
                           ElevatedButton(
@@ -257,7 +421,19 @@ class _register_vehicleState extends State<register_vehicle> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        bottomnavigationbar()),
+                                                        bottomnavigationbar(
+                                                          user_2: User_2(
+                                                              email:
+                                                                  "tom1@gmail.com",
+                                                              name: "Tom Hanks",
+                                                              password:
+                                                                  "tttttt",
+                                                              gender: "1",
+                                                              height: "182",
+                                                              weight: "83",
+                                                              description: "",
+                                                              age: "61"),
+                                                        )),
                                                 (r) => false);
                                           },
                                         ),
@@ -293,7 +469,7 @@ class _register_vehicleState extends State<register_vehicle> {
                                 );
                               }
                             },
-                            child: Text("Register",
+                            child: Text("Change",
                                 style: TextStyle(color: Colors.black)),
                             style: ButtonStyle(
                                 backgroundColor:
