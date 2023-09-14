@@ -47,6 +47,8 @@ dependencies:
   modal_progress_hud_nsn: ^0.3.0
   http: ^0.13.5
   intl: ^0.17.0
+  flutter_tagging_plus: ^4.0.2
+  filter_list: ^1.0.2
 
   # cloud_functions: ^4.0.6
 
