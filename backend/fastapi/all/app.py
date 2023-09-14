@@ -411,7 +411,7 @@ def predict_all(data:All):
         if(i in sympotoms_direct_disease_dict):
             prediction = sympotoms_direct_disease_dict.get(i)
             return {
-                'prediciton':sympotoms_direct_disease_dict.get(i),
+                'prediction':sympotoms_direct_disease_dict.get(i),
                 'Cure': cure_and_disease.get(prediction),
                 'Doctor': doctor_and_disease.get(prediction),
                 'Risk': risk_and_disease.get(prediction),
