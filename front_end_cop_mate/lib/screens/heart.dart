@@ -65,6 +65,10 @@ class _heartState extends State<heart> {
           ),
         ),
       ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
     );
   }
 
@@ -135,6 +139,10 @@ class _heartState extends State<heart> {
           ),
         ),
       ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
     );
   }
 
@@ -205,6 +213,10 @@ class _heartState extends State<heart> {
           ),
         ),
       ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
     );
   }
 
@@ -275,6 +287,10 @@ class _heartState extends State<heart> {
           ),
         ),
       ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
     );
   }
 
@@ -307,6 +323,10 @@ class _heartState extends State<heart> {
           ),
         ),
       ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
     );
   }
 
@@ -462,7 +482,7 @@ class _heartState extends State<heart> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Virtual Aid'),
+        title: Text('Heart Disease Prediction'),
         backgroundColor: Color(0xFF518BB8),
       ),
       body: SingleChildScrollView(
@@ -475,7 +495,7 @@ class _heartState extends State<heart> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    Color(0xFF234E70),
+                    Color(0xFF8008CA),
                     Colors.white,
                   ],
                 ),
@@ -530,27 +550,31 @@ class _heartState extends State<heart> {
 
                               final response = await http.post(
                                 Uri.parse(
-                                    'https://ml-model-api14.onrender.com/heart_disease'),
-                                body: jsonEncode({
-                                  "age": age,
-                                  "anaemia": anaemia,
-                                  "creatinine_phosphokinase":
-                                      creatinine_phosphokinase,
-                                  "diabetes": diabetes,
-                                  "ejection_fraction": ejection_fraction,
-                                  "high_blood_pressure": high_blood_pressure,
-                                  "platelets": platelets,
-                                  "serum_creatinine": serum_creatinine,
-                                  "serum_sodium": serum_sodium,
-                                  "sex": sex,
-                                  "smoking": smoking,
-                                  "time": time
+                                    'https://ml-model-api15.onrender.com/heart_disease'),
+                                headers: <String, String>{
+                                  'Content-Type':
+                                      'application/json; charset=UTF-8',
+                                },
+                                body: jsonEncode(<String, String>{
+                                  "age": "75",
+                                  "anaemia": "0",
+                                  "creatinine_phosphokinase": "582",
+                                  "diabetes": "0",
+                                  "ejection_fraction": "20",
+                                  "high_blood_pressure": "21",
+                                  "platelets": "265000.03",
+                                  "serum_creatinine": "1.9",
+                                  "serum_sodium": "130",
+                                  "sex": "1",
+                                  "smoking": "0",
+                                  "time": "4"
                                 }),
                               );
                               print(response.statusCode);
                               if (response.statusCode == 200) {
-                                dynamic resp = jsonDecode(response.body);
-                                print(resp);
+                                var prediction = jsonDecode(response.body);
+                                int predict = prediction["prediction"];
+                                print(prediction["prediction"].runtimeType);
                                 showDialog<void>(
                                   context: context,
                                   barrierDismissible:
@@ -560,8 +584,9 @@ class _heartState extends State<heart> {
                                       title: const Text('Successful!'),
                                       content: SingleChildScrollView(
                                         child: ListBody(
-                                          children: const <Widget>[
-                                            Text('prediction'),
+                                          children: <Widget>[
+                                            Text("Prediction:" +
+                                                predict.toString()),
                                           ],
                                         ),
                                       ),
@@ -569,12 +594,7 @@ class _heartState extends State<heart> {
                                         TextButton(
                                           child: const Text('Okay'),
                                           onPressed: () {
-                                            Navigator.pushAndRemoveUntil(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        bottomnavigationbar()),
-                                                (r) => false);
+                                            Navigator.of(context).pop();
                                           },
                                         ),
                                       ],
@@ -610,16 +630,16 @@ class _heartState extends State<heart> {
                               }
                             },
                             child: Text("Predict",
-                                style: TextStyle(color: Colors.black)),
+                                style: TextStyle(color: Colors.white)),
                             style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStatePropertyAll<Color>(
-                                        Color(0xFFFBF8BE)),
+                                        Color(0xFFAC6EBB)),
                                 minimumSize: MaterialStatePropertyAll<Size>(
                                     Size(100, 40))),
                           ),
                           SizedBox(
-                            height: 300,
+                            height: 10,
                           ),
                         ],
                       ),

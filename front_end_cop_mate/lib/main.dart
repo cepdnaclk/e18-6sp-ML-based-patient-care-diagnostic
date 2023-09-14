@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
+import 'package:front_end_cop_mate/screens/lung_cancer.dart';
 import 'package:front_end_cop_mate/screens/one_breaking.dart';
 import 'package:front_end_cop_mate/screens/search_vehicles.dart';
 import 'package:front_end_cop_mate/screens/welcome_screen.dart';
@@ -13,6 +14,8 @@ import 'package:front_end_cop_mate/screens/settings.dart';
 import 'package:front_end_cop_mate/screens/vehicle_analyze.dart';
 import 'package:front_end_cop_mate/screens/welcome_screen.dart';
 import 'package:front_end_cop_mate/screens/heart.dart';
+import 'package:front_end_cop_mate/screens/diabetes.dart';
+import 'package:front_end_cop_mate/screens/brain_stroke.dart';
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -44,6 +47,9 @@ class CopMate extends StatelessWidget {
         bottomnavigationbar.id: (context) => bottomnavigationbar(),
         // /search_vehciles.id: (context) => search_vehciles(),
         heart.id: (context) => heart(),
+        lung_cancer.id: (context) => lung_cancer(),
+        diabetes.id: (context) => diabetes(),
+        brain_stroke.id: (context) => brain_stroke(),
       },
     );
   }

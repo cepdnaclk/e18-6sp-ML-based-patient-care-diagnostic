@@ -9,6 +9,7 @@ import 'package:front_end_cop_mate/screens/settings.dart';
 import 'package:front_end_cop_mate/screens/search_vehicles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:front_end_cop_mate/screens/search_vehicles.dart';
+import 'package:front_end_cop_mate/screens/quick_checkup.dart';
 
 class bottomnavigationbar extends StatefulWidget {
   static const String id = 'bottom_navigation_bar';
@@ -22,6 +23,7 @@ class _bottomnavigationbarState extends State<bottomnavigationbar> {
   final screens = [
     day_summary_graph(),
     //search_vehciles(),
+    quick_checkup(),
     settings()
   ];
 
@@ -62,6 +64,10 @@ class _bottomnavigationbarState extends State<bottomnavigationbar> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.flash_on),
+            label: 'Quick Checkup',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
