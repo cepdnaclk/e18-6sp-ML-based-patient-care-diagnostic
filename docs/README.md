@@ -3,19 +3,19 @@ layout: home
 permalink: ./index.html
 
 # Please update this with your repository name and project title
-repository-name: e18-3yp-Automated-Road-rule-Detector
-title: Automated Road Rule Detector
+repository-name: e18-6sp-ML-based-patient-care-diagnostic
+title: Patient Care Diagnostic System
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Automated Road Rule Detector
+# Patient Care Diagnostic System
 
 ---
 
 ## Team
 -  E/18/147, Jameel S. [e18147@eng.pdn.ac.lk](mailto:name@email.com)
--  E/18/242, Nimnadi J.A.S. [e18242@eng.pdn.ac.lk](mailto:name@email.com)
+-  E/18/170, Karunarathna W.K. [e18147@eng.pdn.ac.lk](mailto:name@email.com)
 -  E/18/379, Wanduragala T.D.B. [e18379@eng.pdn.ac.lk](mailto:name@email.com)
 
 <!-- Image (photo/drawing of the final hardware) should be here -->
@@ -27,11 +27,10 @@ title: Automated Road Rule Detector
 #### Table of Contents
 1. [Introduction](#introduction)
 2. [Solution Architecture](#solution-architecture )
-3. [Hardware & Software Designs](#hardware-and-software-designs)
+3. [Software Designs](#hardware-and-software-designs)
 4. [Testing](#testing)
-5. [Detailed budget](#detailed-budget)
-6. [Conclusion](#conclusion)
-7. [Links](#links)
+5. [Conclusion](#conclusion)
+6. [Links](#links)
 
 ## Introduction
 
@@ -39,13 +38,11 @@ https://user-images.githubusercontent.com/73468096/204227892-e27bf4dd-a8cb-4a1b-
 
 
 
-Road accidents are ever increasing in number. It has been reported that the average death rate due to accidents on the road is 6 people a day. It is also noted that over 1000 road accidents happen in a week. Although policemen are on the look for those who drive recklessly and there is a heavy fining system for road traffic related incidents, we see that these existing solutions prove to be ineffective. 
+In an era where technology is being tested to its limits in terms of making ones life easy, we see a need for this approach in the medical industry as well. 
 
-Another problem with the existing solution is that most drivers obey rules only when they see an official (policeman) on the road. This most definitely does not and will not solve the problems we face on the road.
+If you realy think about it, there is little to nothing we know about our own bodies and how our body reacts to certain things. In fact when we fall ill most of us seem to be helpless unless met with a professional and advice is given to us. This demonstrates the huge gap between the knowledge of a doctor and that of a patient. 
 
-Therefore, we propose a system that will be mounted onto a vehicle that senses its speed, line crossing and the distance from the vehicle to an incoming vehicle on the other lane while crossing a line. All these sensed details will be used to determine the severity of the vehicle’s road-lines based road rule breakage.
-
-The details we gather will then be made available to the use of the motor traffic department/ police for further analysis of drivers and having them face consequences accordingly. 
+The motivation behind our project is to bridge this gap of knowledge between a doctor and patients. 
 
 ## Solution Architecture
 
