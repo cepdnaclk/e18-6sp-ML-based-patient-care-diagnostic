@@ -7,13 +7,16 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
+import 'package:front_end_cop_mate/models/User_2.dart';
 
 class one_breaking extends StatefulWidget {
   static const String id = 'one_breaking';
   final Breaking breaking;
+  final User_2 user_2;
 
   const one_breaking({
     required this.breaking,
+    required this.user_2,
   });
 
   @override
@@ -33,7 +36,16 @@ class _one_breakingState extends State<one_breaking> {
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => bottomnavigationbar()),
+                        builder: (context) => bottomnavigationbar(
+                            user_2: User_2(
+                                email: "tom1@gmail.com",
+                                name: "Tom Hanks",
+                                password: "tttttt",
+                                gender: "1",
+                                height: "182",
+                                weight: "83",
+                                description: "",
+                                age: "61"))),
                     (r) => false);
               },
               icon: Icon(Icons.home))

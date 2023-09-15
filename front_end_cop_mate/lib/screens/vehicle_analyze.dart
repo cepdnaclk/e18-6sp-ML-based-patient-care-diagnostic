@@ -10,6 +10,7 @@ import 'package:front_end_cop_mate/models/Vehicle.dart';
 import 'package:front_end_cop_mate/models/Breaking.dart';
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
 import 'package:http/http.dart' as http;
+import 'package:front_end_cop_mate/models/User_2.dart';
 
 class vehicle_analyze extends StatefulWidget {
   static const String id = 'vehcile_analyze';
@@ -119,7 +120,17 @@ class _vehicle_analyzeState extends State<vehicle_analyze> {
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => bottomnavigationbar()),
+                        builder: (context) => bottomnavigationbar(
+                              user_2: User_2(
+                                  email: "tom1@gmail.com",
+                                  name: "Tom Hanks",
+                                  password: "tttttt",
+                                  gender: "1",
+                                  height: "182",
+                                  weight: "83",
+                                  description: "",
+                                  age: "61"),
+                            )),
                     (r) => false);
               },
               icon: Icon(Icons.home))
@@ -193,7 +204,19 @@ class _vehicle_analyzeState extends State<vehicle_analyze> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        bottomnavigationbar()),
+                                                        bottomnavigationbar(
+                                                          user_2: User_2(
+                                                              email:
+                                                                  "tom1@gmail.com",
+                                                              name: "Tom Hanks",
+                                                              password:
+                                                                  "tttttt",
+                                                              gender: "1",
+                                                              height: "182",
+                                                              weight: "83",
+                                                              description: "",
+                                                              age: "61"),
+                                                        )),
                                                 (r) => false);
                                           }
                                         },
@@ -304,6 +327,15 @@ class _vehicle_analyzeState extends State<vehicle_analyze> {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => one_breaking(
                                             breaking: breaking,
+                                            user_2: User_2(
+                                                email: "tom1@gmail.com",
+                                                name: "Tom Hanks",
+                                                password: "tttttt",
+                                                gender: "1",
+                                                height: "182",
+                                                weight: "83",
+                                                description: "",
+                                                age: "61"),
                                           )));
                                 },
                               ),

@@ -12,6 +12,18 @@ import 'package:front_end_cop_mate/screens/login_screen.dart';
 import 'package:front_end_cop_mate/screens/welcome_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
+import "package:cloud_firestore/cloud_firestore.dart";
+
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:toggle_switch/toggle_switch.dart';
+import 'package:flutter/services.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:front_end_cop_mate/elements/heading.dart';
+import 'package:http/http.dart' as http;
+import 'package:front_end_cop_mate/bottomnavgationbar.dart';
 
 class register_user extends StatefulWidget {
   static const String id = 'register_user';
@@ -23,10 +35,16 @@ class register_user extends StatefulWidget {
 class _register_userState extends State<register_user> {
   @override
   final _auth = FirebaseAuth.instance;
+  CollectionReference users = FirebaseFirestore.instance.collection('user');
   String email = "";
   String password = "";
   String policeid = "";
   String confirmpassword = "";
+  String Gender = "";
+  String weight = "";
+  String height = "";
+  String age = "";
+
   bool showSpinner = false;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -73,7 +91,7 @@ class _register_userState extends State<register_user> {
     return TextFormField(
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Enter Id';
+          return 'Enter Name';
         }
 
         return null;
@@ -86,12 +104,12 @@ class _register_userState extends State<register_user> {
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
-        labelText: "Id",
+        labelText: "Name",
         icon: Icon(
           FontAwesomeIcons.idCard,
           color: Colors.white,
         ),
-        hintText: "Id",
+        hintText: "Name",
         hintStyle: TextStyle(color: Colors.grey),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -99,6 +117,159 @@ class _register_userState extends State<register_user> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildgender() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white54,
+      ),
+      height: 40,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          Text("Gender:", style: TextStyle(fontSize: 15)),
+          SizedBox(
+            width: 20,
+          ),
+          ToggleSwitch(
+              minWidth: 70.0,
+              cornerRadius: 20.0,
+              activeBgColors: [
+                [Colors.pink[800]!],
+                [Colors.purple[800]!]
+              ],
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.white,
+              initialLabelIndex: 1,
+              totalSwitches: 2,
+              labels: ['Male', 'Female'],
+              radiusStyle: true,
+              onToggle: (index) {
+                if (index == 1) {
+                  index = 0;
+                } else {
+                  index = 1;
+                }
+                Gender = (index.toString());
+                print('switched to: $index');
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildage() {
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Enter age';
+        }
+
+        return null;
+      },
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          age = (value);
+        }
+      },
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        labelText: "Age",
+        icon: Icon(
+          FontAwesomeIcons.child,
+          color: Colors.black,
+        ),
+        hintText: "Age",
+        hintStyle: TextStyle(color: Colors.grey),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+      ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+    );
+  }
+
+  Widget _buildheight() {
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Enter Height';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          height = (value);
+        }
+      },
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        labelText: "Height",
+        icon: Icon(
+          FontAwesomeIcons.ruler,
+          color: Colors.black,
+        ),
+        hintText: "Height",
+        hintStyle: TextStyle(color: Colors.grey),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+      ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+    );
+  }
+
+  Widget _buildweight() {
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Enter Weight';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        if (value != null && value.isNotEmpty) {
+          weight = (value);
+        }
+      },
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        labelText: "weight",
+        icon: Icon(
+          FontAwesomeIcons.ruler,
+          color: Colors.black,
+        ),
+        hintText: "weight",
+        hintStyle: TextStyle(color: Colors.grey),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+      ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
     );
   }
 
@@ -226,6 +397,13 @@ class _register_userState extends State<register_user> {
                           SizedBox(height: 20),
                           _buildconfirmpasswordField(),
                           SizedBox(height: 20),
+                          _buildgender(),
+                          SizedBox(height: 20),
+                          _buildage(),
+                          SizedBox(height: 20),
+                          _buildheight(),
+                          SizedBox(height: 20),
+                          _buildweight(),
                           SizedBox(height: 20),
                           ElevatedButton(
                             onPressed: () async {
@@ -270,6 +448,17 @@ class _register_userState extends State<register_user> {
                                         email: email, password: password);
                                 showSpinner = false;
                                 if (newUser != null) {
+                                  //add to database
+                                  users.add({
+                                    "email": email,
+                                    "name": policeid,
+                                    "password": password,
+                                    "gender": Gender,
+                                    "height": height,
+                                    "weight": weight,
+                                    "age": age,
+                                    "description": "",
+                                  }).then((value) => print("User added"));
                                   showDialog<void>(
                                     context: context,
                                     barrierDismissible:

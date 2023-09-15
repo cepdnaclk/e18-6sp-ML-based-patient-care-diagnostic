@@ -411,7 +411,7 @@ def predict_all(data:All):
         if(i in sympotoms_direct_disease_dict):
             prediction = sympotoms_direct_disease_dict.get(i)
             return {
-                'prediciton':sympotoms_direct_disease_dict.get(i),
+                'prediction':sympotoms_direct_disease_dict.get(i),
                 'Cure': cure_and_disease.get(prediction),
                 'Doctor': doctor_and_disease.get(prediction),
                 'Risk': risk_and_disease.get(prediction),
@@ -467,8 +467,6 @@ def predict_heart_failure(data:Diabetes):
     json_to_return = json.dumps(returnPred, indent=1)
     parse = json.loads(json_to_return)
     return parse
-
-
 
 
 if __name__ == '__app__':

@@ -33,7 +33,7 @@ class _settingsState extends State<settings> {
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               colors: [
-                Color(0xFF234E70),
+                Color(0xFF8008CA),
                 Colors.white,
               ],
             ),
@@ -60,7 +60,7 @@ class _settingsState extends State<settings> {
                       child: Row(
                         children: [
                           Text(
-                            "Register Vehicle",
+                            "Change Details",
                             style: TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           SizedBox(

@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'dart:convert';
 import 'package:front_end_cop_mate/models/Breaking.dart';
+import 'package:front_end_cop_mate/models/User_2.dart';
 
 void main() {
   runApp(_ChartApp());
@@ -19,13 +20,28 @@ class _ChartApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: day_summary_map(),
+      home: day_summary_map(
+          user_2: User_2(
+              email: "tom1@gmail.com",
+              name: "Tom Hanks",
+              password: "tttttt",
+              gender: "1",
+              height: "182",
+              weight: "83",
+              description: "",
+              age: "61")),
     );
   }
 }
 
 class day_summary_map extends StatefulWidget {
   static const String id = 'day_summary_map';
+
+  final User_2 user_2;
+
+  const day_summary_map({
+    required this.user_2,
+  });
 
   @override
   _day_summary_mapState createState() => _day_summary_mapState();
@@ -168,8 +184,18 @@ class _day_summary_mapState extends State<day_summary_map> {
                     iconSize: 35.0,
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              one_breaking(breaking: tempBreak)));
+                          builder: (context) => one_breaking(
+                                breaking: tempBreak,
+                                user_2: User_2(
+                                    email: "tom1@gmail.com",
+                                    name: "Tom Hanks",
+                                    password: "tttttt",
+                                    gender: "1",
+                                    height: "182",
+                                    weight: "83",
+                                    description: "",
+                                    age: "61"),
+                              )));
                     },
                   ),
                 ));
