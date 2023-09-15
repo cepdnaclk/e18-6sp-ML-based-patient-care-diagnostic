@@ -179,6 +179,23 @@
       </div>
  
       <div class="row content">
+
+        <div class="col-md-4 pt-5" data-aos="fade-right">
+          <p>
+            The overview of the data flow in our system would be that the user enters data on symptoms via the frontend (mobile application), the application then makes an API call to the hosted machine learning models to make predictions for the user. The predictions are displayed on the mobile application.
+          </p>
+          <p>
+            User information such as name, weight, height and such not so frequently changed data will be sent to the database in the backend for storing. This information will be used by the machine learning models to make more accurate predictions on a user's medical state. 
+          </p>
+          <p>
+           The users enter a considerable amount of sensitive information. Therefore, when storing and transmitting this data between nodes we paid attention to security and integrity to ensure both privacy and correct results being displayed. If at any node the data is distorted, the advice the app gives a user would change and since this is medic related, it could cost lives. Therefore, integrity is of utmost importance.
+          </p>
+          <p>
+            The following image describes, how and what type of data flows through our system.
+          </p>
+    
+        </div>
+        
         <div class="col-md-7" data-aos="fade-left" style="position: relative; left: 0px; top: 0px;">
           <img src="assets/img/Untitled design (6).png" class="img-fluid" alt="">
         </div>
