@@ -332,6 +332,7 @@ import sklearn
 import json
 from lung_cancer import LungCancer
 from heart_failure import HeartFailure
+from brain_stroke import BrainStroke
 from diabetes import Diabetes
 
 
@@ -349,6 +350,9 @@ heart_failure= pickle.load(pickle_in)
 
 pickle_in= open("diabetes.pkl","rb")
 diabetes= pickle.load(pickle_in)
+
+pickle_in= open("model_brain_stroke.pkl","rb")
+brain_stroke= pickle.load(pickle_in)
 
 # Dataset loading and exploratory data analysis
 df = pd.read_csv('formatted_dataset_all.csv')
@@ -462,6 +466,18 @@ def predict_heart_failure(data:HeartFailure):
 def predict_heart_failure(data:Diabetes):
     data1 = data.dict()
     prediction = diabetes.predict([[data1["Pregnancies"],data1["Glucose"],data1["BloodPressure"],data1["SkinThickness"],data1["Insulin"],data1["BMI"],data1["DiabetesPedigreeFunction"],data1["Age"]]])
+    returnPred = {"prediction":str(prediction[0])}
+    print(returnPred)
+    json_to_return = json.dumps(returnPred, indent=1)
+    parse = json.loads(json_to_return)
+    return parse
+
+
+#predict brain stroke
+@app.post('/brain_stroke')
+def predict_heart_failure(data:BrainStroke):
+    data1 = data.dict()
+    prediction = brain_stroke.predict([[data1["gender"],data1["age"],data1["hypertension"],data1["heart_disease"],data1["ever_married"],data1["work_type"],data1["Residence_type"],data1["avg_glucose_level"],data1["bmi"],data1["smoking_status"]]])
     returnPred = {"prediction":str(prediction[0])}
     print(returnPred)
     json_to_return = json.dumps(returnPred, indent=1)
