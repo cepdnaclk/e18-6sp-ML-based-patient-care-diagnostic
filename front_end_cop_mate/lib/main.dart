@@ -18,6 +18,8 @@ import 'package:front_end_cop_mate/screens/diabetes.dart';
 import 'package:front_end_cop_mate/screens/brain_stroke.dart';
 import 'package:front_end_cop_mate/bottomnavgationbar.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:front_end_cop_mate/screens/chatgpt.dart';
+import 'package:front_end_cop_mate/models/User_2.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,15 +43,34 @@ class CopMate extends StatelessWidget {
         day_summary_map.id: (context) => welcome_screen(),
         login_screen.id: (context) => login_screen(),
         register_user.id: (context) => register_user(),
-        register_vehicle.id: (context) => register_vehicle(),
+        register_vehicle.id: (context) => register_vehicle(
+            user_2: User_2(
+                email: "tom1@gmail.com",
+                name: "Tom Hanks",
+                password: "tttttt",
+                gender: "1",
+                height: "182",
+                weight: "83",
+                description: "",
+                age: "61")),
         settings.id: (context) => settings(),
         //vehicle_analyze.id: (context) => vehicle_analyze(),
-        bottomnavigationbar.id: (context) => bottomnavigationbar(),
+        bottomnavigationbar.id: (context) => bottomnavigationbar(
+            user_2: User_2(
+                email: "tom1@gmail.com",
+                name: "Tom Hanks",
+                password: "tttttt",
+                gender: "1",
+                height: "182",
+                weight: "83",
+                description: "",
+                age: "61")),
         // /search_vehciles.id: (context) => search_vehciles(),
         heart.id: (context) => heart(),
         lung_cancer.id: (context) => lung_cancer(),
         diabetes.id: (context) => diabetes(),
         brain_stroke.id: (context) => brain_stroke(),
+        chatgpt.id: (context) => chatgpt(),
       },
     );
   }

@@ -9,6 +9,8 @@ import 'package:front_end_cop_mate/elements/normalbutton.dart';
 import 'package:front_end_cop_mate/elements/textfield.dart';
 import 'package:front_end_cop_mate/elements/textfield.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:front_end_cop_mate/models/User_2.dart';
+import "package:cloud_firestore/cloud_firestore.dart";
 
 class login_screen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -18,12 +20,34 @@ class login_screen extends StatefulWidget {
 }
 
 class _login_screenState extends State<login_screen> {
+  CollectionReference users = FirebaseFirestore.instance.collection('user');
   final _auth = FirebaseAuth.instance;
   String email = "";
   String password = "";
   bool showSpinner = false;
+  User_2 user_2 = User_2(
+      email: "tom1@gmail.com",
+      name: "Tom Hanks",
+      password: "tttttt",
+      gender: "1",
+      height: "182",
+      weight: "83",
+      description: "",
+      age: "61");
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  void set_user(String email, String name, String password, String gender,
+      String height, String weight, String description, String age) {
+    user_2 = User_2(
+        email: email,
+        name: name,
+        password: password,
+        gender: gender,
+        height: height,
+        weight: weight,
+        description: description,
+        age: age);
+  }
 
   Widget _buildemailField() {
     return TextFormField(
@@ -162,11 +186,28 @@ class _login_screenState extends State<login_screen> {
                                 showSpinner = false;
                               });
                               if (user != null) {
+                                FirebaseFirestore.instance
+                                    .collection('user')
+                                    .where('email', isEqualTo: email)
+                                    .snapshots()
+                                    .listen(
+                                      (data) => set_user(
+                                          data.docs[0]['email'],
+                                          data.docs[0]['name'],
+                                          data.docs[0]['password'],
+                                          data.docs[0]['gender'],
+                                          data.docs[0]['height'],
+                                          data.docs[0]['weight'],
+                                          data.docs[0]['description'],
+                                          data.docs[0]['age']),
+                                    );
                                 Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            bottomnavigationbar()),
+                                            bottomnavigationbar(
+                                              user_2: user_2,
+                                            )),
                                     (r) => false);
                               }
                             } on FirebaseAuthException catch (e) {
@@ -228,8 +269,7 @@ class _login_screenState extends State<login_screen> {
                               }
                             }
                           },
-                          child:
-                          Text(
+                          child: Text(
                             "Login",
                             style: TextStyle(color: Colors.white),
                           ),

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:front_end_cop_mate/models/Diagnosis.dart';
 
 class pop_disease extends StatefulWidget {
   static const String id = 'pop_disease';
+  final Diagnosis diagnosis;
+
+  const pop_disease({
+    required this.diagnosis,
+  });
 
   @override
   State<pop_disease> createState() => _pop_diseaseState();
@@ -36,7 +42,7 @@ class _pop_diseaseState extends State<pop_disease> {
               child: Container(
                 margin: const EdgeInsets.all(10),
                 padding: const EdgeInsets.all(3.0),
-                height: 500,
+                height: 200,
                 width: 1000,
                 decoration: BoxDecoration(
                     boxShadow: [
@@ -59,10 +65,50 @@ class _pop_diseaseState extends State<pop_disease> {
                         alignment: Alignment.topLeft,
                         margin: const EdgeInsets.all(10),
                         padding: const EdgeInsets.all(3.0),
-                        child: Row(
+                        child: Column(
                           children: [
-                            Text('Predicted Disease:',
-                                style: TextStyle(fontSize: 18)),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                      'Predicted Diagnosis:  ' +
+                                          widget.diagnosis.disease +
+                                          "\n",
+                                      style: TextStyle(fontSize: 18)),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                      'Cure:  ' + widget.diagnosis.cure + "\n",
+                                      style: TextStyle(fontSize: 18)),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                      'Doctor:  ' +
+                                          widget.diagnosis.doctor +
+                                          "\n",
+                                      style: TextStyle(fontSize: 18)),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                      'Risk Level:  ' +
+                                          widget.diagnosis.riskFactor +
+                                          "\n",
+                                      style: TextStyle(fontSize: 18)),
+                                ),
+                              ],
+                            ),
                           ],
                         )),
                   ],

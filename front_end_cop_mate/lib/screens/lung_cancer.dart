@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toggle_switch/toggle_switch.dart';
@@ -5,6 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:front_end_cop_mate/elements/heading.dart';
+import 'package:http/http.dart' as http;
+import 'package:front_end_cop_mate/bottomnavgationbar.dart';
 
 class lung_cancer extends StatefulWidget {
   const lung_cancer({super.key});
@@ -14,30 +18,29 @@ class lung_cancer extends StatefulWidget {
 }
 
 class _lung_cancerState extends State<lung_cancer> {
-  String Age = "";
-  String Gender = "";
-  String Alcohol_use = "";
-  String Air_Pollution = "";
-  String Dust_Allergy = "";
-  String OccuPational_Hazards = "";
-  String Genetic_Risk = "";
-  String chronic_Lung_Disease = "";
-  String Balanced_Diet = "";
-  String Obesity = "";
-  String Smoking = "";
-  String Passive_Smoker = "";
-  String Chest_Pain = "";
-
-  String Coughing_of_Blood = "";
-  String Fatigue = "";
-  String Weight_Loss = "";
-  String Shortness_of_Breath = "";
-  String Wheezing = "";
-  String Swallowing_Difficulty = "";
-  String Clubbing_of_Finger_Nails = "";
-  String Frequent_Cold = "";
-  String Dry_Cough = "";
-  String Snoring = "";
+  int Age = 0;
+  int Gender = 0;
+  int Alcohol_use = 0;
+  int Air_Pollution = 0;
+  int Dust_Allergy = 0;
+  int OccuPational_Hazards = 0;
+  int Genetic_Risk = 0;
+  int chronic_Lung_Disease = 0;
+  int Balanced_Diet = 0;
+  int Obesity = 0;
+  int Smoking = 0;
+  int Passive_Smoker = 0;
+  int Chest_Pain = 0;
+  int Coughing_of_Blood = 0;
+  int Fatigue = 0;
+  int Weight_Loss = 0;
+  int Shortness_of_Breath = 0;
+  int Wheezing = 0;
+  int Swallowing_Difficulty = 0;
+  int Clubbing_of_Finger_Nails = 0;
+  int Frequent_Cold = 0;
+  int Dry_Cough = 0;
+  int Snoring = 0;
   bool showSpinner = false;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -53,7 +56,7 @@ class _lung_cancerState extends State<lung_cancer> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          Age = value;
+          Age = int.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -110,7 +113,12 @@ class _lung_cancerState extends State<lung_cancer> {
               labels: ['Male', 'Female'],
               radiusStyle: true,
               onToggle: (index) {
-                Gender = index.toString();
+                if (index == 1) {
+                  index = 0;
+                } else {
+                  index = 1;
+                }
+                Gender = int.parse(index.toString());
                 print('switched to: $index');
               }),
         ],
@@ -193,7 +201,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue1 = value;
-                    Air_Pollution = value.toString();
+                    Air_Pollution = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -207,7 +215,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue1 = value;
-                    Air_Pollution = value.toString();
+                    Air_Pollution = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -272,7 +280,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue2 = value;
-                    Alcohol_use = value.toString();
+                    Alcohol_use = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -286,7 +294,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue2 = value;
-                    Alcohol_use = value.toString();
+                    Alcohol_use = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -351,7 +359,8 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue3 = value;
-                    Dust_Allergy = value.toString();
+                    Dust_Allergy = int.parse(value.toString());
+                    ;
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -365,7 +374,8 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue3 = value;
-                    Dust_Allergy = value.toString();
+                    Dust_Allergy = int.parse(value.toString());
+                    ;
                   });
                 },
                 child: Container(
@@ -430,7 +440,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue4 = value;
-                    OccuPational_Hazards = value.toString();
+                    OccuPational_Hazards = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -444,7 +454,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue4 = value;
-                    OccuPational_Hazards = value.toString();
+                    OccuPational_Hazards = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -510,7 +520,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue5 = value;
-                    Genetic_Risk = value.toString();
+                    Genetic_Risk = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -524,7 +534,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue5 = value;
-                    Genetic_Risk = value.toString();
+                    Genetic_Risk = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -590,7 +600,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue6 = value;
-                    chronic_Lung_Disease = value.toString();
+                    chronic_Lung_Disease = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -604,7 +614,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue6 = value;
-                    chronic_Lung_Disease = value.toString();
+                    chronic_Lung_Disease = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -669,7 +679,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue7 = value;
-                    Balanced_Diet = value.toString();
+                    Balanced_Diet = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -683,7 +693,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue7 = value;
-                    Balanced_Diet = value.toString();
+                    Balanced_Diet = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -748,7 +758,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue8 = value;
-                    Obesity = value.toString();
+                    Obesity = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -762,7 +772,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue8 = value;
-                    Obesity = value.toString();
+                    Obesity = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -827,7 +837,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue9 = value;
-                    Smoking = value.toString();
+                    Smoking = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -841,7 +851,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue9 = value;
-                    Smoking = value.toString();
+                    Smoking = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -906,7 +916,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue10 = value;
-                    Passive_Smoker = value.toString();
+                    Passive_Smoker = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -920,7 +930,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue10 = value;
-                    Passive_Smoker = value.toString();
+                    Passive_Smoker = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -985,7 +995,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue11 = value;
-                    Chest_Pain = value.toString();
+                    Chest_Pain = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -999,7 +1009,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue11 = value;
-                    Chest_Pain = value.toString();
+                    Chest_Pain = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1064,7 +1074,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue12 = value;
-                    Coughing_of_Blood = value.toString();
+                    Coughing_of_Blood = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1078,7 +1088,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue12 = value;
-                    Coughing_of_Blood = value.toString();
+                    Coughing_of_Blood = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1143,7 +1153,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue13 = value;
-                    Fatigue = value.toString();
+                    Fatigue = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1157,7 +1167,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue13 = value;
-                    Fatigue = value.toString();
+                    Fatigue = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1222,7 +1232,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue14 = value;
-                    Weight_Loss = value.toString();
+                    Weight_Loss = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1236,7 +1246,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue14 = value;
-                    Weight_Loss = value.toString();
+                    Weight_Loss = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1301,7 +1311,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue15 = value;
-                    Shortness_of_Breath = value.toString();
+                    Shortness_of_Breath = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1315,7 +1325,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue15 = value;
-                    Shortness_of_Breath = value.toString();
+                    Shortness_of_Breath = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1380,7 +1390,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue16 = value;
-                    Wheezing = value.toString();
+                    Wheezing = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1394,7 +1404,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue16 = value;
-                    Wheezing = value.toString();
+                    Wheezing = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1459,7 +1469,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue17 = value;
-                    Clubbing_of_Finger_Nails = value.toString();
+                    Clubbing_of_Finger_Nails = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1473,7 +1483,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue17 = value;
-                    Clubbing_of_Finger_Nails = value.toString();
+                    Clubbing_of_Finger_Nails = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1538,7 +1548,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue18 = value;
-                    Clubbing_of_Finger_Nails = value.toString();
+                    Clubbing_of_Finger_Nails = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1552,7 +1562,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue18 = value;
-                    Clubbing_of_Finger_Nails = value.toString();
+                    Clubbing_of_Finger_Nails = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1617,7 +1627,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue19 = value;
-                    Frequent_Cold = value.toString();
+                    Frequent_Cold = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1631,7 +1641,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue19 = value;
-                    Frequent_Cold = value.toString();
+                    Frequent_Cold = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1696,7 +1706,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue20 = value;
-                    Dry_Cough = value.toString();
+                    Dry_Cough = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1710,7 +1720,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue20 = value;
-                    Dry_Cough = value.toString();
+                    Dry_Cough = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1775,7 +1785,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue21 = value;
-                    Snoring = value.toString();
+                    Snoring = int.parse(value.toString());
                   });
                 },
                 // color: widgetPointerValue < 40
@@ -1789,7 +1799,7 @@ class _lung_cancerState extends State<lung_cancer> {
                 onChanged: (value) {
                   setState(() {
                     widgetPointerValue21 = value;
-                    Snoring = value.toString();
+                    Snoring = int.parse(value.toString());
                   });
                 },
                 child: Container(
@@ -1835,7 +1845,7 @@ class _lung_cancerState extends State<lung_cancer> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Lung Cancer Prediction'),
-        backgroundColor: Color(0xFF518BB8),
+        backgroundColor: Color(0xFFAC6EBB),
       ),
       body: SingleChildScrollView(
         child: ModalProgressHUD(
@@ -1872,12 +1882,12 @@ class _lung_cancerState extends State<lung_cancer> {
                         children: <Widget>[
                           Column(
                             children: [
-                              _buildage(),
-                              SizedBox(height: 20),
-                              _buildgender(),
+                              // _buildage(),
+                              // SizedBox(height: 20),
+                              // _buildgender(),
                             ],
                           ),
-                          SizedBox(height: 20),
+                          //SizedBox(height: 20),
                           _build_on_a_scale(),
                           SizedBox(height: 10),
                           _buildAir_Pollution(),
@@ -1926,91 +1936,111 @@ class _lung_cancerState extends State<lung_cancer> {
                           SizedBox(height: 20),
                           ElevatedButton(
                             onPressed: () async {
-                              // if (!_formkey.currentState!.validate()) {
-                              //   return;
-                              // }
-                              // _formkey.currentState!.save();
-                              //
-                              // final response = await http.post(
-                              //   Uri.parse(
-                              //       'https://ml-model-api14.onrender.com/heart_disease'),
-                              //   body: jsonEncode({
-                              //     "age": age,
-                              //     "anaemia": anaemia,
-                              //     "creatinine_phosphokinase":
-                              //         creatinine_phosphokinase,
-                              //     "diabetes": diabetes,
-                              //     "ejection_fraction": ejection_fraction,
-                              //     "high_blood_pressure": high_blood_pressure,
-                              //     "platelets": platelets,
-                              //     "serum_creatinine": serum_creatinine,
-                              //     "serum_sodium": serum_sodium,
-                              //     "sex": sex,
-                              //     "smoking": smoking,
-                              //     "time": time
-                              //   }),
-                              // );
-                              // print(response.statusCode);
-                              // if (response.statusCode == 200) {
-                              //   dynamic resp = jsonDecode(response.body);
-                              //   print(resp);
-                              //   showDialog<void>(
-                              //     context: context,
-                              //     barrierDismissible:
-                              //         false, // user must tap button!
-                              //     builder: (BuildContext context) {
-                              //       return AlertDialog(
-                              //         title: const Text('Successful!'),
-                              //         content: SingleChildScrollView(
-                              //           child: ListBody(
-                              //             children: const <Widget>[
-                              //               Text('prediction'),
-                              //             ],
-                              //           ),
-                              //         ),
-                              //         actions: <Widget>[
-                              //           TextButton(
-                              //             child: const Text('Okay'),
-                              //             onPressed: () {
-                              //               Navigator.pushAndRemoveUntil(
-                              //                   context,
-                              //                   MaterialPageRoute(
-                              //                       builder: (context) =>
-                              //                           bottomnavigationbar()),
-                              //                   (r) => false);
-                              //             },
-                              //           ),
-                              //         ],
-                              //       );
-                              //     },
-                              //   );
-                              // } else {
-                              //   showDialog<void>(
-                              //     context: context,
-                              //     barrierDismissible:
-                              //         false, // user must tap button!
-                              //     builder: (BuildContext context) {
-                              //       return AlertDialog(
-                              //         title: const Text('Unsuccessful'),
-                              //         content: SingleChildScrollView(
-                              //           child: ListBody(
-                              //             children: const <Widget>[
-                              //               Text('Please try again!'),
-                              //             ],
-                              //           ),
-                              //         ),
-                              //         actions: <Widget>[
-                              //           TextButton(
-                              //             child: const Text('Okay'),
-                              //             onPressed: () {
-                              //               Navigator.of(context).pop();
-                              //             },
-                              //           ),
-                              //         ],
-                              //       );
-                              //     },
-                              //   );
-                              // }
+                              if (!_formkey.currentState!.validate()) {
+                                return;
+                              }
+                              _formkey.currentState!.save();
+
+                              final response = await http.post(
+                                Uri.parse(
+                                    'https://thamish-ml-based-patient-care.onrender.com/lung_cancer'),
+                                headers: <String, String>{
+                                  'Content-Type':
+                                      'application/json; charset=UTF-8',
+                                },
+                                body: jsonEncode(<String, int>{
+                                  "Age": Age,
+                                  "Gender": Gender,
+                                  "Air_Pollution": Air_Pollution,
+                                  "Alcohol_use": Alcohol_use,
+                                  "Dust_Allergy": Dust_Allergy,
+                                  "OccuPational_Hazards": OccuPational_Hazards,
+                                  "Genetic_Risk": Genetic_Risk,
+                                  "chronic_Lung_Disease": chronic_Lung_Disease,
+                                  "Balanced_Diet": Balanced_Diet,
+                                  "Obesity": Obesity,
+                                  "Smoking": Smoking,
+                                  "Passive_Smoker": Passive_Smoker,
+                                  "Chest_Pain": Chest_Pain,
+                                  "Coughing_of_Blood": Coughing_of_Blood,
+                                  "Fatigue": Fatigue,
+                                  "Weight_Loss": Weight_Loss,
+                                  "Shortness_of_Breath": Shortness_of_Breath,
+                                  "Wheezing": Wheezing,
+                                  "Swallowing_Difficulty":
+                                      Swallowing_Difficulty,
+                                  "Clubbing_of_Finger_Nails":
+                                      Clubbing_of_Finger_Nails,
+                                  "Frequent_Cold": Frequent_Cold,
+                                  "Dry_Cough": Dry_Cough,
+                                  "Snoring": Snoring
+                                }),
+                              );
+                              print(response.statusCode);
+                              if (response.statusCode == 200) {
+                                dynamic resp = jsonDecode(response.body);
+                                print(resp);
+                                var predict = resp['prediction'];
+                                var message;
+                                if (predict == 'Low') {
+                                  message =
+                                      "You have a low chance of having Lung Cancer";
+                                } else {
+                                  message =
+                                      "You have a High chance of having Lung Cancer";
+                                }
+                                showDialog<void>(
+                                  context: context,
+                                  barrierDismissible:
+                                      false, // user must tap button!
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text('Diagnosis'),
+                                      content: SingleChildScrollView(
+                                        child: ListBody(
+                                          children: <Widget>[
+                                            Text(message),
+                                          ],
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: const Text('Okay'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                showDialog<void>(
+                                  context: context,
+                                  barrierDismissible:
+                                      false, // user must tap button!
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text('Unsuccessful'),
+                                      content: SingleChildScrollView(
+                                        child: ListBody(
+                                          children: const <Widget>[
+                                            Text('Please try again!'),
+                                          ],
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: const Text('Okay'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
                             },
                             child: Text("Predict",
                                 style: TextStyle(color: Colors.white)),

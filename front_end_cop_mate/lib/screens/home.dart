@@ -11,6 +11,7 @@ import 'package:front_end_cop_mate/screens/heart.dart';
 import 'package:front_end_cop_mate/screens/lung_cancer.dart';
 import 'package:front_end_cop_mate/screens/diabetes.dart';
 import 'package:front_end_cop_mate/screens/brain_stroke.dart';
+import 'package:front_end_cop_mate/models/User_2.dart';
 
 void main() {
   return runApp(_ChartApp());

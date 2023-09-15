@@ -19,14 +19,14 @@ class diabetes extends StatefulWidget {
 
 class _diabetesState extends State<diabetes> {
   @override
-  String age = "";
-  String pregnancies = "";
-  String glucose = "";
-  String BloodPressure = "";
-  String SkinThickness = "";
-  String Insulin = "";
-  String BMI = "";
-  String DiabetesPedigreeFunction = "";
+  double age = 0;
+  double pregnancies = 0;
+  double glucose = 0;
+  double BloodPressure = 0;
+  double SkinThickness = 0;
+  double Insulin = 0;
+  double BMI = 0;
+  double DiabetesPedigreeFunction = 0;
   bool showSpinner = false;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -42,7 +42,7 @@ class _diabetesState extends State<diabetes> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          age = value;
+          age = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -79,7 +79,7 @@ class _diabetesState extends State<diabetes> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          pregnancies = value;
+          pregnancies = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -116,7 +116,7 @@ class _diabetesState extends State<diabetes> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          glucose = value;
+          glucose = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -152,7 +152,7 @@ class _diabetesState extends State<diabetes> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          BloodPressure = value;
+          BloodPressure = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -188,7 +188,7 @@ class _diabetesState extends State<diabetes> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          SkinThickness = value;
+          SkinThickness = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -224,7 +224,7 @@ class _diabetesState extends State<diabetes> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          Insulin = value;
+          Insulin = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -260,7 +260,7 @@ class _diabetesState extends State<diabetes> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          BMI = value;
+          BMI = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -296,7 +296,7 @@ class _diabetesState extends State<diabetes> {
       },
       onSaved: (value) {
         if (value != null && value.isNotEmpty) {
-          DiabetesPedigreeFunction = value;
+          DiabetesPedigreeFunction = double.parse(value);
         }
       },
       decoration: InputDecoration(
@@ -327,7 +327,7 @@ class _diabetesState extends State<diabetes> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Diabetes Prediction'),
-        backgroundColor: Color(0xFF518BB8),
+        backgroundColor: Color(0xFFAC6EBB),
       ),
       body: SingleChildScrollView(
         child: ModalProgressHUD(
@@ -386,43 +386,48 @@ class _diabetesState extends State<diabetes> {
 
                               final response = await http.post(
                                 Uri.parse(
-                                    'https://ml-model-api15.onrender.com/heart_disease'),
+                                    'https://thamish-ml-based-patient-care.onrender.com/diabetes'),
                                 headers: <String, String>{
                                   'Content-Type':
                                       'application/json; charset=UTF-8',
                                 },
-                                body: jsonEncode(<String, String>{
-                                  "age": "75",
-                                  "anaemia": "0",
-                                  "creatinine_phosphokinase": "582",
-                                  "diabetes": "0",
-                                  "ejection_fraction": "20",
-                                  "high_blood_pressure": "21",
-                                  "platelets": "265000.03",
-                                  "serum_creatinine": "1.9",
-                                  "serum_sodium": "130",
-                                  "sex": "1",
-                                  "smoking": "0",
-                                  "time": "4"
+                                body: jsonEncode(<String, double>{
+                                  "Pregnancies": pregnancies,
+                                  "Glucose": glucose,
+                                  "BloodPressure": BloodPressure,
+                                  "SkinThickness": SkinThickness,
+                                  "Insulin": Insulin,
+                                  "BMI": BMI,
+                                  "DiabetesPedigreeFunction":
+                                      DiabetesPedigreeFunction,
+                                  "Age": age
                                 }),
                               );
                               print(response.statusCode);
                               if (response.statusCode == 200) {
                                 var prediction = jsonDecode(response.body);
-                                int predict = prediction["prediction"];
-                                print(prediction["prediction"].runtimeType);
+                                int predict =
+                                    int.parse(prediction["prediction"]);
+                                var msg = "";
+                                if (predict == 1) {
+                                  msg =
+                                      "You have a high chance of having Diabetes";
+                                } else {
+                                  msg =
+                                      "You have a high chance of having Diabetes";
+                                }
+
                                 showDialog<void>(
                                   context: context,
                                   barrierDismissible:
                                       false, // user must tap button!
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: const Text('Successful!'),
+                                      title: const Text('Diagnosis'),
                                       content: SingleChildScrollView(
                                         child: ListBody(
                                           children: <Widget>[
-                                            Text("Prediction:" +
-                                                predict.toString()),
+                                            Text(msg),
                                           ],
                                         ),
                                       ),
